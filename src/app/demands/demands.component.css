@@ -1,0 +1,24 @@
+@keyframes pulse-fast {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.animate-pulse-fast {
+    animation: pulse-fast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* For better cross-browser compatibility */
+.drop-shadow-red {
+    filter: drop-shadow(0 0 8px #ef4444);
+}
+
+.drop-shadow-green {
+    filter: drop-shadow(0 0 8px #22c55e);
+}

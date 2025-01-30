@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+
 .nav-underline .nav-link:hover {
     color: #FF0000;
     /* Change text color on hover */
 }
 
 .nav-underline .nav-link.active {
-    color: #FF0000;
+    color: #FF0000 !important;
     /* Change text color for active link */
 }
 
@@ -16,31 +17,92 @@
 }
 
 body {
-    font-family: 'Space Mono';
+    font-family: 'IBM Plex Mono';
     background-color: black;
     color: white;
 }
 
-.space-mono-regular {
-    font-family: "Space Mono", serif;
+
+.ibm-plex-mono-thin {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.ibm-plex-mono-extralight {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.ibm-plex-mono-light {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.ibm-plex-mono-regular {
+    font-family: "IBM Plex Mono", serif;
     font-weight: 400;
     font-style: normal;
 }
 
-.space-mono-bold {
-    font-family: "Space Mono", serif;
+.ibm-plex-mono-medium {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.ibm-plex-mono-semibold {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.ibm-plex-mono-bold {
+    font-family: "IBM Plex Mono", serif;
     font-weight: 700;
     font-style: normal;
 }
 
-.space-mono-regular-italic {
-    font-family: "Space Mono", serif;
+.ibm-plex-mono-thin-italic {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.ibm-plex-mono-extralight-italic {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.ibm-plex-mono-light-italic {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.ibm-plex-mono-regular-italic {
+    font-family: "IBM Plex Mono", serif;
     font-weight: 400;
     font-style: italic;
 }
 
-.space-mono-bold-italic {
-    font-family: "Space Mono", serif;
+.ibm-plex-mono-medium-italic {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.ibm-plex-mono-semibold-italic {
+    font-family: "IBM Plex Mono", serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.ibm-plex-mono-bold-italic {
+    font-family: "IBM Plex Mono", serif;
     font-weight: 700;
     font-style: italic;
 }

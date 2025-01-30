@@ -1,1 +1,40 @@
-<p>demands works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="space-mono-regular bg-black text-white p-4">
+                <!-- Loop through accordion items -->
+                <div *ngFor="let item of accordionItems; let i = index" class="mb-2">
+                  <!-- Accordion Header -->
+                  <button
+                    class="text-left rounded accordion-header flex justify-between items-center w-full p-4 bg-red-950 hover:bg-red-700 text-white focus:outline-none"
+                    (click)="toggleItem(i)"
+                  >
+                    <span>{{ item.title }}</span>
+                    <!-- Arrow Icon -->
+                    <svg
+                      class="w-5 h-5 flex-shrink-0 transform transition-transform"
+                      [ngClass]="{ 'rotate-180': item.isOpen }"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+              
+                  <!-- Accordion Content -->
+                  <div
+                    class="accordion-content overflow-hidden bg-gray-950 transition-all duration-200"
+                    [ngStyle]="{ 'max-height': item.isOpen ? '5000px' : '0' }"
+                  >
+                    <div class="p-4">
+                      {{ item.content }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>

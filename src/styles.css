@@ -12,9 +12,14 @@
     /* Change text color for active link */
 }
 
+.nav-link:active {
+    color: #FF0000 !important;
+}
+
 .nav-link {
     color: #FFFF;
 }
+
 
 body {
     font-family: 'IBM Plex Mono';

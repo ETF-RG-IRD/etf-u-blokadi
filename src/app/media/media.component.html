@@ -1,1 +1,24 @@
-<p>media works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- Image Slider -->
+        <div class="image-slider">
+          <img [src]="images[currentImageIndex]" class="img-fluid" alt="Slideshow Image">
+        </div>
+  
+        <!-- Instagram Profiles -->
+        <div class="space-mono-regular bg-black text-white p-4">
+          <div class="d-flex flex-wrap justify-content-center gap-4">
+            <div *ngFor="let profile of instagramProfiles" class="embed-container">
+              <blockquote
+                class="instagram-media"
+                [attr.data-instgrm-permalink]="'https://www.instagram.com/' + profile.username + '/'"
+                data-instgrm-version="14">
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

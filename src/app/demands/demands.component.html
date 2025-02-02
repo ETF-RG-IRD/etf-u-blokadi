@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <div class="space-mono-regular bg-black text-white p-4">
+      <div class="space-mono-regular text-white p-4">
         <!-- Loop through accordion items -->
         <div *ngFor="let item of accordionItems; let i = index" class="mb-2">
           <!-- Accordion Header -->
@@ -17,14 +17,14 @@
           </button>
 
           <!-- Accordion Content -->
-          <div class="accordion-content overflow-hidden bg-gray-950 rounded transition-all duration-200"
+          <div class="accordion-content overflow-hidden transparent-bg bg-gray-950 rounded-lg transition-all duration-200"
             [ngStyle]="{ 'max-height': item.isOpen ? '5000px' : '0' }">
             <div class="p-4">
               {{ item.content }}
             </div>
             <div>
               <h3 class="text-center !font-extrabold animate-pulse-fast 
-                                 drop-shadow-[0_0_8px_#ef4444]" [ngClass]="{
+                            drop-shadow-[0_0_8px_#ef4444]" [ngClass]="{
                             '!text-red-500 drop-shadow-red': !item.isFulfilled,
                             '!text-green-500 drop-shadow-green': item.isFulfilled
                           }">

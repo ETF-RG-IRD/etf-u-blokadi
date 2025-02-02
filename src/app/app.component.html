@@ -3,7 +3,8 @@
         <div class="col-sm-12">
             <ul class="nav nav-underline px-5 py-1">
                 <li class="nav-item px-2">
-                    <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Zahtevi</a>
+                    <a class="nav-link" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Zahtevi</a>
                 </li>
                 <li class="nav-item px-2">
                     <a class="nav-link" routerLink="/announcements" routerLinkActive="active">Najave</a>
@@ -25,11 +26,11 @@
     </div>
     <div class="row py-5">
         <div class="col-sm-12">
-            <h1 class="text-center !text-red-500 !font-bold">Tehnički fakulteti u blokadi</h1>
+            <app-typewriter></app-typewriter>
         </div>
     </div>
 </div>
 <div class="container">
-    
+
     <router-outlet />
 </div>

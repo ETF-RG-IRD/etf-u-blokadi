@@ -20,11 +20,36 @@
     color: #FFFF;
 }
 
+.transparent-bg {
+    background-color: rgba(3, 7, 18, 0.6); /* Gray-950 with 70% opacity */
+}
 
 body {
     font-family: 'IBM Plex Mono';
     background-color: black;
     color: white;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../public/bg-still1.jpg');
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center; /* Centers the image */
+    filter: blur(3px) brightness(0.75); /* Blur and darken the image */
+    z-index: -1; /* Ensure it stays behind the content */
+}
+
+
+/* Don't touch this! */
+/* Ensure content is above the background */
+body {
+    position: relative;
+    z-index: 1;
 }
 
 

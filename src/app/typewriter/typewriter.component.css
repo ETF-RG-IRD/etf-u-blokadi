@@ -1,0 +1,11 @@
+/* Blinking cursor animation */
+@keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  .blinking-cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+  }

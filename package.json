@@ -22,6 +22,10 @@
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/postcss": "^4.0.1",
     "bootstrap": "^5.3.3",
+    "express": "^4.21.2",
+    "fastify": "^5.2.1",
+    "fastify-cors": "^6.0.3",
+    "fastify-helmet": "^7.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

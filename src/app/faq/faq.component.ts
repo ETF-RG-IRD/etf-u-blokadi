@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsBotService } from '../services/news-bot.service';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,13 +7,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
-export class FaqComponent implements OnInit {
-  message: any;
 
-  constructor(private news: NewsBotService) {}
-  ngOnInit(): void {
-    this.news.getMessage().subscribe(data => {
-      this.message = data;
-    })
+export class FaqComponent {
+    faqItems = [
+      { question: "Šta je plenum?", answer: "Na plenumu studenti glasaju o bitnim pitanja.", isOpen: false },
+      { question: "Kako mogu da pomognem?", answer: "Donacijama (link) i izlaženjem na proteste.", isOpen: false }
+  ];
+
+  toggleItem(index: number): void {
+      this.faqItems[index].isOpen = !this.faqItems[index].isOpen;
   }
 }

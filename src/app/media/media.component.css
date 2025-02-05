@@ -10,6 +10,11 @@
 
   .embed-container:hover{
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
+    /* Has to be exact width and height as the fetched embed iframe (as seen in inspect element).
+       Inline style cannot be overwritten and fit-content doesn't work either bcs it
+       has a bottom margin...
+       Could get height after loading and adjust height but that could be choppy.*/
     width : 326px;
     height : 444px;
 

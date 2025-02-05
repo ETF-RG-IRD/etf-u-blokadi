@@ -27,6 +27,10 @@ export class MediaComponent implements AfterViewInit {
     this.startImageSlideshow();
   }
 
+
+  /* Loads too slowly. Making it load OnInit, adding delays and checking if it's loaded before attempting to load
+     didn't help. Could just be that loading this many embeds is slow. Network tab is reporting some errors
+     adding more delays, should be checked.*/
   loadInstagramEmbed() {
     if ((window as any).instgrm) {
       (window as any).instgrm.Embeds.process();

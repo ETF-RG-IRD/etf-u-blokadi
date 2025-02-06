@@ -6,21 +6,12 @@ import { LoaderComponent } from './loader/loader.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TypewriterComponent, LoaderComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TypewriterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'etf-u-blokadi';
-  loading = true;
 
-  constructor(private router: Router) {
-    // On initial load - spinner
-    window.addEventListener('load', () => {
-      const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
-      setTimeout(() => {
-        this.loading = false;
-      }, delay);
-    });
-  }
+  constructor(private router: Router) {}
 }

@@ -9,3 +9,8 @@
     display: inline-block;
     animation: blink 1s infinite;
   }
+
+  .typewriter-text, .blinking-cursor{
+    user-select: none;
+    cursor : default;
+  }

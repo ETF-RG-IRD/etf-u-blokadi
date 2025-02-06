@@ -1,11 +1,15 @@
-<div class="container">
+<div class="media-container">
+  <!-- Loader overlay, displayed only while media is loading -->
+  <app-loading *ngIf="mediaLoading"></app-loading>
+
+  <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <!-- Image Slider -->
         <div class="image-slider">
           <img [src]="images[currentImageIndex]" class="img-fluid" alt="Slideshow Image">
         </div>
-  
+
         <!-- Instagram Profiles -->
         <div class="space-mono-regular bg-transparent text-white p-4">
           <div class="d-flex flex-wrap justify-content-center gap-4">
@@ -18,7 +22,8 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-  
+</div>

@@ -15,25 +15,12 @@ export class AppComponent {
   loading = true;
 
   constructor(private router: Router) {
-    // Initial load delay
+    // On initial load - spinner
     window.addEventListener('load', () => {
       const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
       setTimeout(() => {
         this.loading = false;
       }, delay);
-    });
-
-    // Listen to route events
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.loading = true;
-      }
-      if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
-        const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
-        setTimeout(() => {
-          this.loading = false;
-        }, delay);
-      }
     });
   }
 }

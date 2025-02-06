@@ -1,5 +1,5 @@
 .embed-container {
-    width: 280px;
+    width: 350px;
     height: 120px;
     overflow: hidden;
     border-radius: 10px;
@@ -15,7 +15,6 @@
        Inline style cannot be overwritten and fit-content doesn't work either bcs it
        has a bottom margin...
        Could get height after loading and adjust height but that could be choppy.*/
-    width : 326px;
     height : 444px;
 
     transition : 0.5s;

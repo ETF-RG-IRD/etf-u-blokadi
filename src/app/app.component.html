@@ -1,39 +1,36 @@
-<body>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <ul class="nav nav-underline px-5 py-1">
-                    <li class="nav-item px-2">
-                        <a class="nav-link" routerLink="/" routerLinkActive="active"
-                            [routerLinkActiveOptions]="{ exact: true }">Zahtevi</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" routerLink="/announcements" routerLinkActive="active">Najave</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" routerLink="/incidents" routerLinkActive="active">Incidenti</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" routerLink="/media" routerLinkActive="active">Mediji</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" routerLink="/faq" routerLinkActive="active">FAQ</a>
-                    </li>
-                    <li class="nav-item px-2">
-                        <a class="nav-link" routerLink="/contact" routerLinkActive="active">Kontakt</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row py-5">
-            <div class="col-sm-12">
-                <app-typewriter></app-typewriter>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-    
-        <router-outlet />
-    </div>
-</body>
+<app-loading *ngIf="loading"></app-loading>
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+              <ul class="nav nav-underline px-5 py-1">
+                  <li class="nav-item px-2">
+                      <a class="nav-link" routerLink="/" routerLinkActive="active"
+                          [routerLinkActiveOptions]="{ exact: true }">Zahtevi</a>
+                  </li>
+                  <li class="nav-item px-2">
+                      <a class="nav-link" routerLink="/announcements" routerLinkActive="active">Najave</a>
+                  </li>
+                  <li class="nav-item px-2">
+                      <a class="nav-link" routerLink="/incidents" routerLinkActive="active">Incidenti</a>
+                  </li>
+                  <li class="nav-item px-2">
+                      <a class="nav-link" routerLink="/media" routerLinkActive="active">Mediji</a>
+                  </li>
+                  <li class="nav-item px-2">
+                      <a class="nav-link" routerLink="/faq" routerLinkActive="active">FAQ</a>
+                  </li>
+                  <li class="nav-item px-2">
+                      <a class="nav-link" routerLink="/contact" routerLinkActive="active">Kontakt</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="row py-5">
+          <div class="col-sm-12">
+              <app-typewriter></app-typewriter>
+          </div>
+      </div>
+      <div class="container">
+          <router-outlet></router-outlet>
+      </div>
+  </div>

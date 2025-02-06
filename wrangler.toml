@@ -1,0 +1,6 @@
+name = "main-worker"
+type = "javascript"  # Even though you're deploying static assets, this is required
+
+[site]
+bucket = "./dist/etf-u-blokadi/browser"  # Update this path to match your build output folder
+entry-point = "workers-site"

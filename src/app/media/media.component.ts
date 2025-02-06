@@ -50,7 +50,7 @@ export class MediaComponent implements AfterViewInit {
   ngOnLoad() {
     setTimeout(() => {
       this.mediaLoading = false;
-    }, 1000);
+    }, 500);
   }
 
   startImageSlideshow() {

@@ -1,6 +1,6 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from '../loader/loader.component'; // Ensure correct path
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-media',
@@ -9,7 +9,7 @@ import { LoaderComponent } from '../loader/loader.component'; // Ensure correct 
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
-export class MediaComponent implements AfterViewInit {
+export class MediaComponent implements OnInit, AfterViewInit {
   instagramProfiles = [
     { username: 'etfublokadi' },
     { username: 'grf.blokade' },
@@ -20,12 +20,15 @@ export class MediaComponent implements AfterViewInit {
 
   images = Array.from({ length: 10 }, (_, i) => `${i + 1}.jpg`);
   currentImageIndex = 0;
-  mediaLoading = true; // Flag to control media spinner overlay.
+  mediaLoading = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.loadInstagramEmbed();
+  }
+
+  ngAfterViewInit() {
     this.startImageSlideshow();
   }
 
@@ -38,19 +41,23 @@ export class MediaComponent implements AfterViewInit {
       script.src = 'https://www.instagram.com/embed.js';
       script.async = true;
       script.defer = true;
+      let scriptLoaded = false;
       script.onload = () => {
-        (window as any).instgrm.Embeds.process();
-        this.ngOnLoad();
+        if (!scriptLoaded) {
+          scriptLoaded = true;
+          (window as any).instgrm.Embeds.process();
+          this.ngOnLoad();
+        }
       };
       this.renderer.appendChild(document.body, script);
     }
   }
 
-  // Custom onLoad method for media component.
   ngOnLoad() {
+    const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
     setTimeout(() => {
       this.mediaLoading = false;
-    }, 500);
+    }, delay);
   }
 
   startImageSlideshow() {

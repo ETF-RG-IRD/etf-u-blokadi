@@ -7,10 +7,23 @@
       <div class="col-sm-12">
         <!-- Image Slider -->
         <div class="image-slider">
-          <img [src]="images[currentImageIndex]" class="img-fluid" alt="Slideshow Image">
+          <!-- Main image (always visible) -->
+          <img [src]="images[currentImageIndex]" class="img-fluid main-image" alt="Slideshow Image" image-rendering="pixelated">
+
+          <!-- Transition overlay: visible only when transitioning -->
+          <div class="transition-bars" *ngIf="transitioning">
+            <div *ngFor="let bar of bars; let i = index"
+                 class="bar"
+                 [ngStyle]="{
+                   'animation-delay': (i * 0.1) + 's',
+                   'background-image': 'url(' + images[nextImageIndex] + ')',
+                   'background-position': 'center ' + (-i * 30) + 'px'
+                 }">
+            </div>
+          </div>
         </div>
 
-        <!-- Instagram Profiles -->
+        <!-- Instagram Profiles (unchanged) -->
         <div class="space-mono-regular bg-transparent text-white p-4">
           <div class="d-flex flex-wrap justify-content-center gap-4">
             <div *ngFor="let profile of instagramProfiles" class="embed-container">

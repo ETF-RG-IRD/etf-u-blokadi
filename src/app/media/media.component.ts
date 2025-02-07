@@ -20,21 +20,30 @@ export class MediaComponent implements OnInit, AfterViewInit {
 
   images = Array.from({ length: 10 }, (_, i) => `${i + 1}.jpg`);
   currentImageIndex = 0;
-  mediaLoading = false;
+  nextImageIndex = 0;
+  mediaLoading = true; // start as loading
+
+  // Transition properties for the "rendering bars" effect
+  transitioning: boolean = false;
+  numberOfBars: number = 10;  // how many horizontal bars (adjust as desired)
+  bars: number[] = [];
+  // Note: The container height is fixed at 300px so each bar’s height is 300/numberOfBars = 30px
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     this.loadInstagramEmbed();
+    this.shuffleInstagramProfiles();
   }
 
   ngAfterViewInit() {
+    // Process Instagram embeds if available
+    this.processInstagramEmbeds();
     this.startImageSlideshow();
   }
 
   loadInstagramEmbed() {
     if ((window as any).instgrm) {
-      (window as any).instgrm.Embeds.process();
       this.ngOnLoad();
     } else {
       const script = this.renderer.createElement('script');
@@ -45,7 +54,7 @@ export class MediaComponent implements OnInit, AfterViewInit {
       script.onload = () => {
         if (!scriptLoaded) {
           scriptLoaded = true;
-          (window as any).instgrm.Embeds.process();
+          this.processInstagramEmbeds();
           this.ngOnLoad();
         }
       };
@@ -53,7 +62,14 @@ export class MediaComponent implements OnInit, AfterViewInit {
     }
   }
 
+  processInstagramEmbeds() {
+    if ((window as any).instgrm && (window as any).instgrm.Embeds) {
+      (window as any).instgrm.Embeds.process();
+    }
+  }
+
   ngOnLoad() {
+    // Simulate a delay for the loader
     const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
     setTimeout(() => {
       this.mediaLoading = false;
@@ -61,13 +77,32 @@ export class MediaComponent implements OnInit, AfterViewInit {
   }
 
   startImageSlideshow() {
+    // Prepare an array of bar indices [0, 1, 2, …]
+    this.bars = Array.from({ length: this.numberOfBars }, (_, i) => i);
+
     setInterval(() => {
-      const currentImage = this.el.nativeElement.querySelector('.image-slider img');
-      currentImage.classList.add('flash');
+      this.nextImageIndex = (this.currentImageIndex + 1) % this.images.length;
+      // Start the transition by displaying the overlay bars
+      this.transitioning = true;
+      // After the animation duration (here 1000ms), update the main image and hide the overlay
       setTimeout(() => {
-        this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-        currentImage.classList.remove('flash');
-      }, 500);
+        this.currentImageIndex = this.nextImageIndex;
+        this.transitioning = false;
+      }, 1500);
     }, 3000);
+  }
+
+  shuffleInstagramProfiles() {
+    // Extract the first profile
+    const firstProfile = this.instagramProfiles.shift();
+
+    // Shuffle the remaining profiles
+    for (let i = this.instagramProfiles.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.instagramProfiles[i], this.instagramProfiles[j]] = [this.instagramProfiles[j], this.instagramProfiles[i]];
+    }
+
+    // Add the first profile back to the beginning
+    this.instagramProfiles.unshift(firstProfile!);
   }
 }

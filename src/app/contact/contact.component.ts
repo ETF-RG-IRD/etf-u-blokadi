@@ -2,21 +2,36 @@
 import { Component, ChangeDetectorRef, ElementRef, Renderer2, AfterViewChecked, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-import { WipComponent } from "../wip/wip.component";
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, WipComponent],
+  imports: [CommonModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
-  encapsulation: ViewEncapsulation.None // Ensures CSS works on dynamically added elements
+  encapsulation: ViewEncapsulation.None, // Ensures CSS works on dynamically added elements
+  animations: [
+    trigger('modalAnimation', [
+      // When modal enters, fade in and slide down
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ]),
+      // When modal leaves, fade out and slide up
+      transition(':leave', [
+        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' }))
+      ])
+    ])
+  ]
 })
 export class ContactComponent implements AfterViewChecked {
   contactLines: string[] = [
-    'root@terminal:~$ <span class="copyable" data-email="plenum@etf.rs">plenum@etf.rs</span>',
-    'root@terminal:~$ <span class="copyable" data-email="tmf.bl0kada24@gmail.com">tmf.bl0kada24@gmail.com</span>',
-    'root@terminal:~$ <span class="copyable" data-email="studenti.arhitekture.bg@edu.arh.bg.ac.rs">studenti.arhitekture.bg@edu.arh.bg.ac.rs</span>',
+    'root@terminal:~$ <span class="copyable" data-email="plenum@etf.rs">Elektrotehnički fakultet - plenum@etf.rs</span>',
+    'root@terminal:~$ <span class="copyable" data-email="grfblokada@gmail.com">Građevinski fakultet - grfblokada@gmail.com</span>',
+    'root@terminal:~$ <span class="copyable" data-email="studenti.arhitekture.bg@edu.arh.bg.ac.rs">Arhitektonski fakultet - studenti.arhitekture.bg@edu.arh.bg.ac.rs</span>',
+    'root@terminal:~$ <span class="copyable" data-email="tmf.bl0kada24@gmail.com">Tehnološko-metalurški fakultet - tmf.bl0kada24@gmail.com</span>',
+    'root@terminal:~$ <span class="copyable" data-email="rglogistikamasinski@gmail.com">Mašinski fakultet - rglogistikamasinski@gmail.com</span>',
     'root@terminal:~$ Website: www.johndoe.dev',
     'root@terminal:~$'
   ];
@@ -27,6 +42,11 @@ export class ContactComponent implements AfterViewChecked {
   private lineIndex = 0;
   private charIndex = 0;
   private isTypingFinished = false;
+
+  // New properties for the custom modal
+  modalVisible: boolean = false;
+  modalMessage: string = "";
+  private modalTimeout: any;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -83,12 +103,33 @@ export class ContactComponent implements AfterViewChecked {
     }
   }
 
+  // Updated method: Instead of using alert(), show a custom modal with animations.
   copyToClipboard(email: string): void {
     navigator.clipboard.writeText(email).then(() => {
-      alert(`📋 Copied: ${email}`);
+      this.showModal(`📋 Kopirano: ${email}`);
     }).catch(err => {
       console.error('Failed to copy email:', err);
+      this.showModal('Failed to copy text.');
     });
+  }
+
+  // Display the modal with the given message and auto-hide after 2 seconds.
+  showModal(message: string): void {
+    this.modalMessage = message;
+    this.modalVisible = true;
+    // Clear any previous timeout to avoid conflicts
+    if (this.modalTimeout) {
+      clearTimeout(this.modalTimeout);
+    }
+    this.modalTimeout = setTimeout(() => {
+      this.hideModal();
+      this.cdr.detectChanges(); // Ensure the view updates
+    }, 2000);
+  }
+
+  // Hide the modal (also called when clicking outside the modal content)
+  hideModal(): void {
+    this.modalVisible = false;
   }
 
   toggleCursorVisibility(): void {

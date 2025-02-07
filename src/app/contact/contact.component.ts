@@ -27,13 +27,12 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class ContactComponent implements AfterViewChecked {
   contactLines: string[] = [
-    'root@terminal:~$ <span class="copyable" data-email="plenum@etf.rs">Elektrotehnički fakultet - plenum@etf.rs</span>',
-    'root@terminal:~$ <span class="copyable" data-email="grfblokada@gmail.com">Građevinski fakultet - grfblokada@gmail.com</span>',
-    'root@terminal:~$ <span class="copyable" data-email="studenti.arhitekture.bg@edu.arh.bg.ac.rs">Arhitektonski fakultet - studenti.arhitekture.bg@edu.arh.bg.ac.rs</span>',
-    'root@terminal:~$ <span class="copyable" data-email="tmf.bl0kada24@gmail.com">Tehnološko-metalurški fakultet - tmf.bl0kada24@gmail.com</span>',
-    'root@terminal:~$ <span class="copyable" data-email="rglogistikamasinski@gmail.com">Mašinski fakultet - rglogistikamasinski@gmail.com</span>',
-    'root@terminal:~$ Website: www.johndoe.dev',
-    'root@terminal:~$'
+    'root@terminal:~$ Elektrotehnički fakultet - <span class="copyable" data-email="plenum@etf.rs">plenum@etf.rs</span>',
+    'root@terminal:~$ Građevinski fakultet - <span class="copyable" data-email="grfblokada@gmail.com">grfblokada@gmail.com</span>',
+    'root@terminal:~$ Arhitektonski fakultet - <span class="copyable" data-email="studenti.arhitekture.bg@edu.arh.bg.ac.rs">studenti.arhitekture.bg@edu.arh.bg.ac.rs</span>',
+    'root@terminal:~$ Tehnološko-metalurški fakultet - <span class="copyable" data-email="tmf.bl0kada24@gmail.com">tmf.bl0kada24@gmail.com</span>',
+    'root@terminal:~$ Mašinski fakultet - <span class="copyable" data-email="masinskiplenum@gmail.com">masinskiplenum@gmail.com</span>',
+    'root@terminal:~$ '
   ];
   
   // Changed type to string for simpler concatenation

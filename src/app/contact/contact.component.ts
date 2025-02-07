@@ -1,17 +1,13 @@
+// Language: TypeScript
 import { Component, ChangeDetectorRef, ElementRef, Renderer2, AfterViewChecked, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser'; // Add this import
-
-@Component({
-  selector: 'app-contact',
-  standalone: true, // Add this if using standalone components
-  imports: [CommonModule], // Add this line to import CommonModule
-import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { WipComponent } from "../wip/wip.component";
 
 @Component({
   selector: 'app-contact',
-  imports: [WipComponent],
+  standalone: true,
+  imports: [CommonModule, WipComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   encapsulation: ViewEncapsulation.None // Ensures CSS works on dynamically added elements
@@ -25,8 +21,9 @@ export class ContactComponent implements AfterViewChecked {
     'root@terminal:~$'
   ];
   
-  displayText: SafeHtml = "";
-  cursorVisible: boolean = false;  // Set cursor visibility to false initially
+  // Changed type to string for simpler concatenation
+  displayText: string = "";
+  cursorVisible: boolean = false;
   private lineIndex = 0;
   private charIndex = 0;
   private isTypingFinished = false;
@@ -35,12 +32,12 @@ export class ContactComponent implements AfterViewChecked {
     private cdr: ChangeDetectorRef,
     private elRef: ElementRef,
     private renderer: Renderer2,
-    private sanitizer: DomSanitizer // Inject DomSanitizer
+    private sanitizer: DomSanitizer
   ) {
     this.typeText();
     setInterval(() => {
       this.cdr.detectChanges();
-      this.toggleCursorVisibility(); // Toggle cursor visibility based on cursorVisible
+      this.toggleCursorVisibility();
     }, 500);
   }
 
@@ -63,30 +60,29 @@ export class ContactComponent implements AfterViewChecked {
         setTimeout(() => this.typeText(), 50);
       }
     } else {
-      // Typing finished: show cursor and attach click handlers
+      // Typing finished: show cursor and mark finished
       this.cursorVisible = true;
+      this.isTypingFinished = true;
       this.attachClickHandlers();
     }
   }
 
- // contact.component.ts (updated)
- attachClickHandlers(): void {
-  if (this.isTypingFinished) {
-    // Get all copyable spans that don't have listeners yet
-    const copyableSpans = this.elRef.nativeElement.querySelectorAll('.copyable:not([data-listener-added])');
-    
-    copyableSpans.forEach((span: HTMLElement) => {
-      const email = span.innerText.trim();
-      this.renderer.setAttribute(span, 'data-listener-added', 'true');
-      this.renderer.listen(span, 'click', () => this.copyToClipboard(email));
+  attachClickHandlers(): void {
+    if (this.isTypingFinished) {
+      const copyableSpans = this.elRef.nativeElement.querySelectorAll('.copyable:not([data-listener-added])');
       
-      // Add hover effects
-      this.renderer.setStyle(span, 'cursor', 'pointer');
-      this.renderer.setStyle(span, 'text-decoration', 'underline');
-    });
-    this.isTypingFinished = false;
+      copyableSpans.forEach((span: HTMLElement) => {
+        const email = span.innerText.trim();
+        this.renderer.setAttribute(span, 'data-listener-added', 'true');
+        this.renderer.listen(span, 'click', () => this.copyToClipboard(email));
+        this.renderer.setStyle(span, 'cursor', 'pointer');
+        this.renderer.setStyle(span, 'text-decoration', 'underline');
+      });
+      // Reset flag so new listeners are not added repeatedly
+      this.isTypingFinished = false;
+    }
   }
-}
+
   copyToClipboard(email: string): void {
     navigator.clipboard.writeText(email).then(() => {
       alert(`📋 Copied: ${email}`);
@@ -95,7 +91,6 @@ export class ContactComponent implements AfterViewChecked {
     });
   }
 
-  // Function to toggle cursor visibility
   toggleCursorVisibility(): void {
     const cursorElement = this.elRef.nativeElement.querySelector('.cursor');
     if (cursorElement) {

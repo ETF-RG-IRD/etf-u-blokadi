@@ -5,16 +5,16 @@ import { TypewriterComponent } from "./typewriter/typewriter.component";
 import { LoaderComponent } from './loader/loader.component';
 import { slideInAnimation } from './app.animation'; // Import your animation trigger
 
-
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TypewriterComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TypewriterComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [ slideInAnimation ] // Add the animation trigger here
+  animations: [ slideInAnimation ]
 })
 export class AppComponent {
   title = 'etf-u-blokadi';
+  loading: boolean = true; // Declare the loading property
 
   constructor(private router: Router) {
     // On initial load - spinner
@@ -26,7 +26,7 @@ export class AppComponent {
     });
   }
 
-  // This method will be used to determine the animation state from the activated route's data.
+  // Determines the animation state from the activated route's data.
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }

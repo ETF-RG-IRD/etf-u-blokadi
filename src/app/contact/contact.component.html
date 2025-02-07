@@ -1,1 +1,8 @@
-<app-wip></app-wip>
+<div class="text-lg bg-black text-green-500 font-mono border-2 shadow-[0_0_10px_rgba(0,255,0,0.8)] p-2.5 rounded-lg max-w-[60%] mx-auto cursor-default">
+  <div class="bg-[#003300] p-1.25 text-green-500 font-bold text-left">
+    <span class="pl-1.25">root&#64;terminal</span>
+  </div>
+  <div class="p-2.5 min-h-[150px] whitespace-pre-wrap break-words terminal-output">
+    <pre [innerHTML]="displayText"></pre><span *ngIf="cursorVisible" class="cursor">█</span>
+  </div>
+</div>

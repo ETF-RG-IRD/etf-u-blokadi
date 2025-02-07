@@ -1,0 +1,41 @@
+  /* Custom CSS for the blinking cursor */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: #00ff00;
+  margin-left: 4px;
+  visibility: hidden; /* Make sure cursor is hidden initially */
+  animation: blink 0.5s step-end infinite alternate;
+  cursor : default;
+  user-select: none;
+}
+
+.cursor.visible {
+  visibility: visible; /* Cursor is visible only when the class is added */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+/* Ensure pre-formatted text wraps */
+.whitespace-pre-wrap {
+  white-space: break-word;
+}
+
+
+.copyable {
+  color: #00ff00;
+  cursor: default;
+  text-decoration: underline;
+}
+
+.copyable:hover {
+  color: #b8ffb8;
+  cursor : default;
+}
+

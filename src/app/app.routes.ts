@@ -8,11 +8,11 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
-    {path: '', component: DemandsComponent},
-    {path: 'index', component: IndexComponent},
-    {path: 'announcements', component: AnnouncementsComponent},
-    {path: 'faq', component: FaqComponent},
-    {path: 'media', component: MediaComponent},
-    {path: 'incidents', component: IncidentsComponent},
-    {path: 'contact', component: ContactComponent}
+  { path: '', component: DemandsComponent, data: { animation: 'DemandsPage' } },
+  { path: 'index', component: IndexComponent, data: { animation: 'IndexPage' } },
+  { path: 'announcements', component: AnnouncementsComponent, data: { animation: 'AnnouncementsPage' } },
+  { path: 'faq', component: FaqComponent, data: { animation: 'FaqPage' } },
+  { path: 'media', component: MediaComponent, data: { animation: 'MediaPage' } },
+  { path: 'incidents', component: IncidentsComponent, data: { animation: 'IncidentsPage' } },
+  { path: 'contact', component: ContactComponent, data: { animation: 'ContactPage' } }
 ];

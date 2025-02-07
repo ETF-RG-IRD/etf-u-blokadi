@@ -6,6 +6,12 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser'; // Add this 
   selector: 'app-contact',
   standalone: true, // Add this if using standalone components
   imports: [CommonModule], // Add this line to import CommonModule
+import { Component } from '@angular/core';
+import { WipComponent } from "../wip/wip.component";
+
+@Component({
+  selector: 'app-contact',
+  imports: [WipComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   encapsulation: ViewEncapsulation.None // Ensures CSS works on dynamically added elements

@@ -1,0 +1,5 @@
+name = "etf-u-blokadi"        # Replace with your desired project name
+type = "webpack"                 # or "javascript", depending on your setup
+
+# For Cloudflare Pages deployments, add:
+pages_build_output_dir = "dist/etf-u-blokadi"  # The folder containing your built static files

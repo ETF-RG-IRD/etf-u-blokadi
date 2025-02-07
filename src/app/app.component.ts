@@ -8,14 +8,13 @@ import { slideInAnimation } from './app.animation'; // Import your animation tri
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TypewriterComponent, LoaderComponent],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, TypewriterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [ slideInAnimation ] // Add the animation trigger here
 })
 export class AppComponent {
   title = 'etf-u-blokadi';
-  loading = true;
 
   constructor(private router: Router) {
     // On initial load - spinner

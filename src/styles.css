@@ -4,21 +4,40 @@
 
 .nav-underline .nav-link:hover {
     color: #FF0000;
+
+    transition : color 0.3s ease;
     /* Change text color on hover */
 }
 
 .nav-underline .nav-link.active {
     color: #FF0000 !important;
+
+    transition : color 0.3s ease;
     /* Change text color for active link */
 }
 
-.nav-link:active {
-    color: #FF0000 !important;
-}
-
 .nav-link {
-    color: #FFFF;
-}
+    position: relative;
+    cursor : default;
+    color: #FFF; /* adjust as needed */
+  }
+  
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FF0000; /* adjust color as needed */
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-link:hover::before {
+    transform: scaleX(1);
+  }
 
 .transparent-bg {
     background-color: rgba(3, 7, 18, 0.6); /* Gray-950 with 70% opacity */
@@ -42,8 +61,19 @@ body::before {
     background-position: center; /* Centers the image */
     filter: blur(3px) brightness(0.75); /* Blur and darken the image */
     z-index: -1; /* Ensure it stays behind the content */
+    animation: contrastPulse 5s infinite ease-in-out;
 }
 
+@keyframes contrastPulse {
+    0%, 100% {
+        filter: blur(4px) brightness(0.75);
+        transform : scaleX(1);
+    }
+    50% {
+        filter: blur(3px) brightness(1);
+        transform : scaleX(1.01);
+    }
+}
 
 /* Don't touch this! */
 /* Ensure content is above the background */

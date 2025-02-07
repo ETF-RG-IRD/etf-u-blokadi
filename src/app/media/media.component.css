@@ -43,12 +43,115 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.8s ease-in-out;
+  opacity: 1;
 }
 
-.instagram-embeds {
-  margin-top: 20px;
+/* Ensure the slider container has a fixed height */
+.image-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
-.instagram-embed {
-  margin-bottom: 20px;
+/* Main image styling */
+.image-slider .main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* Transition overlay container (unchanged) */
+.transition-bars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+/* Each bar covers one horizontal stripe of the image */
+.transition-bars .bar {
+  flex: 1;  /* Each bar gets an equal share of the height */
+  background-size: 100% 300px;  /* Ensure the background image spans the full container height */
+  background-repeat: no-repeat;
+  transform: scaleX(0);
+  transform-origin: left;
+  /* Increase duration to 1s and use a cubic-bezier easing for a smoother effect */
+  animation: renderBar 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  image-rendering: pixelated;
+}
+
+/* Keyframes to animate each bar from 0 to full width with a slight overshoot */
+@keyframes renderBar {
+  0% {
+    transform: scaleX(0);
+    filter: grayscale(50%) blur(0px);
+  }
+  
+  25% {
+    transform: scaleX(0.5);
+    filter: grayscale(150%) blur(5px);
+  }
+  
+  50% {
+    transform: scaleX(1);
+    filter: grayscale(200%) blur(3px);
+  }
+  
+  75% {
+    transform: scaleX(0.5);
+    filter: grayscale(150%) blur(1px);
+  }
+  
+  90% {
+    /* Keep the bar fully faded by this point */
+    transform: scaleX(0);
+    filter: grayscale(0%) blur(0);
+
+    /* Transition the filter property to fade out the image */
+    transition: filter 0.3s ease-in-out;
+  }
+
+  100% {
+    transform: scaleX(0);
+    filter: grayscale(0%) blur(0);
+    transition: filter 0.3s ease-in-out;
+  }
+}
+
+
+
+.image-slider img.fade-out {
+  opacity: 0;
+
+  transition : opacity 0.8s ease-in-out;
+}
+
+/* Ensure the embed container has a defined height */
+.embed-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.embed-container {
+  position: relative;
+  overflow: hidden;
+  height: 350px; /* Set a fixed height */
+  transition: height 0.3s ease; /* Transition the height property */
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 100px;
+
+  transition : border-top-left-radius 0.3s ease, border-bottom-right-radius 0.3s ease;
+}
+
+.embed-container:hover {
+  border-top-left-radius : 0px;
+  border-bottom-right-radius: 0px;
+
+  transition : border-top-left-radius 0.3s ease, border-bottom-right-radius 0.3s ease;
 }

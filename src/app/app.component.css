@@ -1,0 +1,7 @@
+.nav-link {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: default;
+    text-decoration: none;
+  }

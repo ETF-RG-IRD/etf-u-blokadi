@@ -1,0 +1,44 @@
+.iframe-wrapper {
+    width: 100%;
+    height: 600px; /* The visible height of the embed */
+    overflow: hidden;
+}
+
+.embedded-frame {
+
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    transition: box-shadow 0.3s ease;
+    overflow: auto; /* Enable scrolling */
+    
+    /* Firefox scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+.embedded-frame:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar styling for WebKit browsers */
+.embedded-frame::-webkit-scrollbar {
+    width: 10px;
+}
+
+.embedded-frame::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.embedded-frame::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.embedded-frame::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

@@ -1,5 +1,5 @@
 <div class="media-container">
-  <!-- Loader overlay, displayed only while media is loading -->
+  <!-- Loader overlay (displayed while media is loading) -->
   <app-loading *ngIf="mediaLoading"></app-loading>
 
   <div class="container">
@@ -7,23 +7,28 @@
       <div class="col-sm-12">
         <!-- Image Slider -->
         <div class="image-slider">
-          <!-- Main image (always visible) -->
-          <img [src]="images[currentImageIndex]" class="img-fluid main-image" alt="Slideshow Image" image-rendering="pixelated">
-
-          <!-- Transition overlay: visible only when transitioning -->
-          <div class="transition-bars" *ngIf="transitioning">
-            <div *ngFor="let bar of bars; let i = index"
-                 class="bar"
-                 [ngStyle]="{
-                   'animation-delay': (i * 0.1) + 's',
-                   'background-image': 'url(' + images[nextImageIndex] + ')',
-                   'background-position': 'center ' + (-i * 30) + 'px'
-                 }">
-            </div>
+          <!-- Current image (visible) -->
+          <img
+            [src]="images[currentImageIndex]"
+            class="img-fluid current-image"
+            alt="Slideshow Image"
+            image-rendering="pixelated">
+          <!-- Next image (used during transition) -->
+          <img
+            class="img-fluid next-image"
+            alt="Slideshow Image"
+            image-rendering="pixelated">
+          <!-- Left arrow clickable area -->
+          <div class="arrow arrow-left" (click)="previousImage($event)">
+            &#10094;
+          </div>
+          <!-- Right arrow clickable area -->
+          <div class="arrow arrow-right" (click)="nextImage($event)">
+            &#10095;
           </div>
         </div>
 
-        <!-- Instagram Profiles (unchanged) -->
+        <!-- Instagram Profiles -->
         <div class="space-mono-regular bg-transparent text-white p-4">
           <div class="d-flex flex-wrap justify-content-center gap-4">
             <div *ngFor="let profile of instagramProfiles" class="embed-container">
@@ -35,7 +40,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

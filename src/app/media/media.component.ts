@@ -79,15 +79,33 @@ export class MediaComponent implements OnInit, AfterViewInit {
   startImageSlideshow() {
     // Prepare an array of bar indices [0, 1, 2, …]
     this.bars = Array.from({ length: this.numberOfBars }, (_, i) => i);
-
+  
     setInterval(() => {
+      // Find the main image element in the template
+      const mainImage = this.el.nativeElement.querySelector('.main-image');
+  
+      // Increase brightness for the flash effect
+      if (mainImage) {
+        this.renderer.setStyle(mainImage, 'filter', 'brightness(5)');
+        // apply tranzition effect
+        this.renderer.setStyle(mainImage, 'transition', 'filter 1.3s');
+      }
+  
+      // Determine next image index for the slideshow
       this.nextImageIndex = (this.currentImageIndex + 1) % this.images.length;
-      // Start the transition by displaying the overlay bars
+      // Start transition (bars rendering effect)
       this.transitioning = true;
-      // After the animation duration (here 1000ms), update the main image and hide the overlay
+  
+      // After the transition duration, update the image and reset brightness
       setTimeout(() => {
         this.currentImageIndex = this.nextImageIndex;
         this.transitioning = false;
+        if (mainImage) {
+          // Restore normal brightness
+          this.renderer.setStyle(mainImage, 'filter', 'brightness(1)');
+          // remove transition effect
+          
+        }
       }, 1500);
     }, 3000);
   }

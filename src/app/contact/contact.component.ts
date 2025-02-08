@@ -71,12 +71,12 @@ export class ContactComponent implements AfterViewChecked {
       if (this.charIndex < this.contactLines[this.lineIndex].length) {
         this.displayText += this.contactLines[this.lineIndex][this.charIndex];
         this.charIndex++;
-        setTimeout(() => this.typeText(), 10);
+        setTimeout(() => this.typeText(), 2);
       } else {
         this.displayText += "\n";
         this.lineIndex++;
         this.charIndex = 0;
-        setTimeout(() => this.typeText(), 50);
+        setTimeout(() => this.typeText(), 10);
       }
     } else {
       // Typing finished: show cursor and mark finished

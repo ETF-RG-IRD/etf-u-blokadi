@@ -6,9 +6,11 @@ import { FaqComponent } from './faq/faq.component';
 import { MediaComponent } from './media/media.component';
 import { IncidentsComponent } from './incidents/incidents.component';
 import { ContactComponent } from './contact/contact.component';
+import { DonationsComponent } from './donations/donations.component'; 
 
 export const routes: Routes = [
   { path: '', component: DemandsComponent, data: { animation: 'DemandsPage' } },
+  { path: 'donations', component: DonationsComponent, data: { animation: 'DonationsPage' } },
   { path: 'index', component: IndexComponent, data: { animation: 'IndexPage' } },
   { path: 'announcements', component: AnnouncementsComponent, data: { animation: 'AnnouncementsPage' } },
   { path: 'faq', component: FaqComponent, data: { animation: 'FaqPage' } },

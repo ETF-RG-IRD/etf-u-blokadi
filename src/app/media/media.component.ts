@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, Renderer2, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
 
@@ -9,7 +9,8 @@ import { LoaderComponent } from '../loader/loader.component';
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
-export class MediaComponent implements OnInit, AfterViewInit {
+export class MediaComponent implements OnInit, AfterViewInit, OnDestroy {
+  // Sample Instagram profiles for embed
   instagramProfiles = [
     { username: 'etfublokadi' },
     { username: 'grf.blokade' },
@@ -18,16 +19,14 @@ export class MediaComponent implements OnInit, AfterViewInit {
     { username: 'tmf.blokada' }
   ];
 
+  // Array of image file names (assumed to be in your assets folder or served appropriately)
   images = Array.from({ length: 10 }, (_, i) => `${i + 1}.jpg`);
   currentImageIndex = 0;
   nextImageIndex = 0;
-  mediaLoading = true; // start as loading
+  mediaLoading = true; // flag for loader
 
-  // Transition properties for the "rendering bars" effect
-  transitioning: boolean = false;
-  numberOfBars: number = 10;  // how many horizontal bars (adjust as desired)
-  bars: number[] = [];
-  // Note: The container height is fixed at 300px so each bar’s height is 300/numberOfBars = 30px
+  autoSlideInterval: any; // reference for auto slide interval
+  isAnimating = false; // flag to prevent overlapping transitions
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -37,11 +36,20 @@ export class MediaComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Process Instagram embeds if available
     this.processInstagramEmbeds();
-    this.startImageSlideshow();
+    // Start auto slide every 3 seconds
+    this.autoSlideInterval = setInterval(() => {
+      this.nextImage();
+    }, 3000);
   }
 
+  ngOnDestroy() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
+  }
+
+  // Load the Instagram embed script if not already loaded
   loadInstagramEmbed() {
     if ((window as any).instgrm) {
       this.ngOnLoad();
@@ -62,65 +70,105 @@ export class MediaComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // Process any Instagram embeds if available
   processInstagramEmbeds() {
     if ((window as any).instgrm && (window as any).instgrm.Embeds) {
       (window as any).instgrm.Embeds.process();
     }
   }
 
+  // Simulate a delay for the loader
   ngOnLoad() {
-    // Simulate a delay for the loader
     const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
     setTimeout(() => {
       this.mediaLoading = false;
     }, delay);
   }
 
-  startImageSlideshow() {
-    // Prepare an array of bar indices [0, 1, 2, …]
-    this.bars = Array.from({ length: this.numberOfBars }, (_, i) => i);
-  
-    setInterval(() => {
-      // Find the main image element in the template
-      const mainImage = this.el.nativeElement.querySelector('.main-image');
-  
-      // Increase brightness for the flash effect
-      if (mainImage) {
-        this.renderer.setStyle(mainImage, 'filter', 'brightness(5)');
-        // apply tranzition effect
-        this.renderer.setStyle(mainImage, 'transition', 'filter 1.3s');
-      }
-  
-      // Determine next image index for the slideshow
-      this.nextImageIndex = (this.currentImageIndex + 1) % this.images.length;
-      // Start transition (bars rendering effect)
-      this.transitioning = true;
-  
-      // After the transition duration, update the image and reset brightness
-      setTimeout(() => {
-        this.currentImageIndex = this.nextImageIndex;
-        this.transitioning = false;
-        if (mainImage) {
-          // Restore normal brightness
-          this.renderer.setStyle(mainImage, 'filter', 'brightness(1)');
-          // remove transition effect
-          
-        }
-      }, 1500);
-    }, 3000);
+  // Navigate to next image (triggered automatically or by clicking right arrow)
+  nextImage(event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    this.nextImageIndex = (this.currentImageIndex + 1) % this.images.length;
+    this.performTransition('next');
   }
 
-  shuffleInstagramProfiles() {
-    // Extract the first profile
-    const firstProfile = this.instagramProfiles.shift();
+  // Navigate to previous image (triggered by clicking left arrow)
+  previousImage(event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    this.nextImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
+    this.performTransition('prev');
+  }
 
-    // Shuffle the remaining profiles
+  // Performs the transition animation.
+  // Direction is either 'next' (slide left) or 'prev' (slide right)
+  performTransition(direction: 'next' | 'prev') {
+    const currentImg: HTMLElement = this.el.nativeElement.querySelector('.current-image');
+    const nextImg: HTMLImageElement = this.el.nativeElement.querySelector('.next-image');
+
+    // Set next image source
+    nextImg.src = this.images[this.nextImageIndex];
+
+    // Remove any previous animation classes
+    this.renderer.removeClass(currentImg, 'slide-out-left');
+    this.renderer.removeClass(currentImg, 'slide-out-right');
+    this.renderer.removeClass(nextImg, 'slide-in-right');
+    this.renderer.removeClass(nextImg, 'slide-in-left');
+
+    // Set initial transform for next image based on direction:
+    if (direction === 'next') {
+      // For a "next" transition, the next image starts off to the right
+      this.renderer.setStyle(nextImg, 'transform', 'translateX(100%)');
+    } else {
+      // For a "prev" transition, the next image starts off to the left
+      this.renderer.setStyle(nextImg, 'transform', 'translateX(-100%)');
+    }
+    // Force reflow so the initial position is applied before starting the animation
+    nextImg.getBoundingClientRect();
+
+    // Apply animation classes based on direction
+    if (direction === 'next') {
+      this.renderer.addClass(currentImg, 'slide-out-left');
+      this.renderer.addClass(nextImg, 'slide-in-right');
+    } else {
+      this.renderer.addClass(currentImg, 'slide-out-right');
+      this.renderer.addClass(nextImg, 'slide-in-left');
+    }
+
+    // After animation (duration 1s), update the current image and reset classes/styles
+    setTimeout(() => {
+      this.currentImageIndex = this.nextImageIndex;
+      // Update the visible image (current-image element)
+      currentImg.setAttribute('src', this.images[this.currentImageIndex]);
+
+      // Reset transform styles
+      this.renderer.setStyle(currentImg, 'transform', 'translateX(0)');
+      this.renderer.setStyle(nextImg, 'transform', 'translateX(0)');
+
+      // Remove animation classes
+      this.renderer.removeClass(currentImg, 'slide-out-left');
+      this.renderer.removeClass(currentImg, 'slide-out-right');
+      this.renderer.removeClass(nextImg, 'slide-in-right');
+      this.renderer.removeClass(nextImg, 'slide-in-left');
+
+      this.isAnimating = false;
+    }, 1000);
+  }
+
+  // Shuffle Instagram profiles (optional)
+  shuffleInstagramProfiles() {
+    const firstProfile = this.instagramProfiles.shift();
     for (let i = this.instagramProfiles.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.instagramProfiles[i], this.instagramProfiles[j]] = [this.instagramProfiles[j], this.instagramProfiles[i]];
     }
-
-    // Add the first profile back to the beginning
     this.instagramProfiles.unshift(firstProfile!);
   }
 }

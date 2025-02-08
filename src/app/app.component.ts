@@ -5,6 +5,7 @@ import { TypewriterComponent } from "./typewriter/typewriter.component";
 import { LoaderComponent } from './loader/loader.component';
 import { slideInAnimation } from './app.animation'; // Import your animation trigger
 import "leaflet/dist/leaflet.css"
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-root',

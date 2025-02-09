@@ -82,12 +82,13 @@ body::before {
 /* ------- Prevents the everything moving bcs of the scrollbar ------- */
 html {
     scrollbar-gutter: stable both-sides;
+    overflow-x: hidden;
 }
 
 .screen-stable {
     position: relative;
     left: calc((100vw - 100%) / 2);
-    overflow-x: hidden;
+    
 }
 /* -------------------------------------------------------------------- */
 

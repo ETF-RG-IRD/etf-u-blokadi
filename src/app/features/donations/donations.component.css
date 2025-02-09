@@ -1,27 +1,50 @@
-.map-fixed-container {
-    position: fixed;
-    margin-top : 50px;
-    top: 50%;
-    left: 50%;
-    width: 60%;
-    height: 650px;
-    transform: translate(-50%, -50%);
-    border: 2px solid black; /* optional, to visualize container */
-  }
-  
-  #map {
-    width: 100%;
-    height: 100%;
-    overflow : hidden;
-  }
-
-
-  .leaflet-popup-content-wrapper {
+ .leaflet-popup-content-wrapper {
     transition: opacity 0.3s ease-in-out;
     opacity: 0;
   }
-  
+
   .leaflet-popup-content-wrapper.fade-in {
     opacity: 1;
   }
-  
+
+  .custom-button {
+    position: absolute;
+    top: 80%;
+    left: 49%;
+    z-index: 1000;
+    background-color: #8B0000;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Tooltip pseudo-element */
+  .custom-button::after {
+    content: "Poseti blokadnedonacije.rs";
+    position: absolute;
+    bottom: 110%; /* positions the tooltip above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Show the tooltip on hover */
+  .custom-button:hover::after {
+    opacity: 1;
+  }
+
+  .custom-button:hover {
+    background-color: #a70000;
+    transform: scale(1.1);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }

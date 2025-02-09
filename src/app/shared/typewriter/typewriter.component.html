@@ -1,4 +1,4 @@
-<div [ngClass]="{ 'pt-20': showHero, 'h-auto flex items-center justify-center': !showHero }">
+<div [ngClass]="{ 'pt-20': showHero, 'min-h-[170px] flex items-start justify-start pt-5': !showHero }">
     <div class="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <h1 *ngIf="showHero"
             class="max-w-3xl mr-auto my-4 place-self-center lg:col-span-10 text-left text-red-500 font-bold ibm-plex-mono-bold text-5xl md:text-7xl lg:text-8xl tracking-wider">
@@ -7,9 +7,9 @@
         </h1>
         <h1 [ngClass]="{ 'max-w-7xl text-center ibm-plex-mono-medium lg:col-span-12': !showHero, 'text-left ibm-plex-mono-light lg:col-span-10': showHero }"
             class="max-w-3xl mr-auto my-2 pl-2 place-self-center text-red-500 font-bold tracking-wider">
-            <span [ngClass]="{ 'text-center text-4xl lg:text-5xl': !showHero, 'text-left': showHero }"
+            <span [ngClass]="{ 'text-center text-3xl lg:text-5xl': !showHero, 'text-left': showHero }"
                 class="typewriter-text2 text-2xl md:text-3xl uppercase">{{ displayedText2 }}</span>
-            <span [ngClass]="{ 'text-center text-4xl lg:text-5xl': !showHero, 'text-left': showHero }"
+            <span [ngClass]="{ 'text-center text-3xl lg:text-5xl': !showHero, 'text-left': showHero }"
                 class="blinking-cursor text-2xl md:text-4xl" *ngIf="showCursor2">|</span>
         </h1>
     </div>

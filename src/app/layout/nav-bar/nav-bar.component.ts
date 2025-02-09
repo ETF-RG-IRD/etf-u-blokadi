@@ -16,6 +16,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class NavBarComponent {
   siteLangugage = 'Српски';
+  navDropdownOpen = false;
   langDropdownOpen = false;
   languageList = [
     { code: 'sr-cyr', label: 'Српски' },
@@ -31,6 +32,10 @@ export class NavBarComponent {
 
   toggleLangDropdown(): void {
     this.langDropdownOpen = !this.langDropdownOpen;
+  }
+
+  toggleNavDropdown(): void {
+    this.navDropdownOpen = !this.navDropdownOpen;
   }
 
   changeSiteLanguage(localeCode: string): void {

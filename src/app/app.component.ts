@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { TypewriterComponent } from "./shared/typewriter/typewriter.component";
 import { LoaderComponent } from './layout/loader/loader.component';
 import { NgxTranslateModule } from './shared/translate/translate.module';
@@ -13,8 +13,6 @@ import { filter } from 'rxjs/operators';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
     TypewriterComponent,
     LoaderComponent,
     NgxTranslateModule,

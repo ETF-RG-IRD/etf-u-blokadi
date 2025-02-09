@@ -25,9 +25,10 @@
 }
 
 
-/* Ensure pre-formatted text wraps */
-.whitespace-pre-wrap {
-  white-space: break-word;
+.terminal-output pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 

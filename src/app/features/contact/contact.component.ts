@@ -34,7 +34,7 @@ export class ContactComponent implements AfterViewChecked {
     'root@terminal:~$ Mašinski fakultet - <span class="copyable" data-email="masinskiplenum@gmail.com">masinskiplenum@gmail.com</span>',
     'root@terminal:~$ '
   ];
-  
+
   // Changed type to string for simpler concatenation
   displayText: string = "";
   cursorVisible: boolean = false;
@@ -89,7 +89,7 @@ export class ContactComponent implements AfterViewChecked {
   attachClickHandlers(): void {
     if (this.isTypingFinished) {
       const copyableSpans = this.elRef.nativeElement.querySelectorAll('.copyable:not([data-listener-added])');
-      
+
       copyableSpans.forEach((span: HTMLElement) => {
         const email = span.innerText.trim();
         this.renderer.setAttribute(span, 'data-listener-added', 'true');

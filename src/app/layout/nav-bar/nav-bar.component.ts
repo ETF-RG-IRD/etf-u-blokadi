@@ -2,17 +2,43 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  query,
+  stagger
+} from '@angular/animations';
 
 @Component({
   selector: 'app-nav-bar',
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.css'],
   imports: [
     CommonModule,
     RouterLink,
     RouterLinkActive,
     TranslateModule,
   ],
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  animations: [
+    // Apply cascade animation to the whole container
+    trigger('listAnimation', [
+      transition(':enter', [
+        query('*', [
+          // Start all child elements slightly above with zero opacity.
+          style({ opacity: 0, transform: 'translateY(-20px)' }),
+          // Each child starts its animation 100ms after the previous one.
+          stagger(40, [
+            animate(
+              '100ms ease-out',
+              style({ opacity: 1, transform: 'translateY(0)' })
+            )
+          ])
+        ], { optional: true })
+      ])
+    ])
+  ]
 })
 export class NavBarComponent {
   siteLangugage = 'Српски';
@@ -50,7 +76,6 @@ export class NavBarComponent {
       });
     }
     this.langDropdownOpen = false;
-    const currentLanguage = this.translate.currentLang;
-    console.log('currentLanguage', currentLanguage);
+    console.log('currentLanguage', this.translate.currentLang);
   }
 }

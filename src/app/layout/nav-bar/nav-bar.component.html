@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-10 bg-zinc-900/20 backdrop-filter backdrop-blur-lg border-b border-zinc-700/10 shadow-md">
+<nav class="sticky top-0 z-1000 bg-zinc-900/20 backdrop-filter backdrop-blur-lg border-b border-zinc-700/10 shadow-md">
     <div
         class="screen-stable relative max-w-screen-xl flex flex-wrap text-white items-center justify-between mx-auto p-2">
         <!-- Left side: Navigation links -->
@@ -32,29 +32,57 @@
             </svg>
         </button>
 
-        <!-- Mobile nav menu dropdown -->
-        <div *ngIf="navDropdownOpen"
-            class="absolute top-full left-0 w-full bg-zinc-900 backdrop-filter backdrop-blur-lg border-b rounded-lg border-zinc-700/10 shadow-md md:hidden">
-            <ul *ngIf="navDropdownOpen" (click)="toggleNavDropdown()"
-                class="flex flex-col md:flex-row md:gap-8 gap-3 px-2 md:my-1 my-3 items-center flex-wrap">
-                <li><a class="nav-link" routerLink="/" routerLinkActive="text-red-500"
-                        [routerLinkActiveOptions]="{ exact: true }">{{
-                        "ZAHTEVI"
-                        | translate }}</a></li>
-                <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/donations" routerLinkActive="active">{{ "DONACIJE" | translate }}</a></li>
-                <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/announcements" routerLinkActive="font-bold">{{ "NAJAVE" | translate }}</a></li>
-                <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/incidents" routerLinkActive="font-bold">{{ "INCIDENTI" | translate }}</a></li>
-                <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/media" routerLinkActive="font-bold">{{ "MEDIJI" | translate }}</a></li>
-                <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/faq" routerLinkActive="font-bold">{{ "FAQ" | translate }}</a></li>
-                <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/contact" routerLinkActive="font-bold">{{ "KONTAKT" | translate }}</a></li>
-            </ul>
-        </div>
+ <!-- Mobile nav menu dropdown -->
+<div *ngIf="navDropdownOpen"
+@listAnimation
+class="absolute top-full left-0 w-full bg-zinc-900 backdrop-filter backdrop-blur-lg border-b rounded-lg border-zinc-700/10 shadow-md md:hidden">
+<ul (click)="toggleNavDropdown()"
+ class="flex flex-col md:flex-row md:gap-8 gap-3 px-2 md:my-1 my-3 items-center flex-wrap">
+<li>
+ <a class="nav-link" routerLink="/" routerLinkActive="text-red-500"
+    [routerLinkActiveOptions]="{ exact: true }">
+    {{ "ZAHTEVI" | translate }}
+ </a>
+</li>
+<li>
+ <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+    routerLink="/donations" routerLinkActive="active">
+    {{ "DONACIJE" | translate }}
+ </a>
+</li>
+<li>
+ <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+    routerLink="/announcements" routerLinkActive="font-bold">
+    {{ "NAJAVE" | translate }}
+ </a>
+</li>
+<li>
+ <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+    routerLink="/incidents" routerLinkActive="font-bold">
+    {{ "INCIDENTI" | translate }}
+ </a>
+</li>
+<li>
+ <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+    routerLink="/media" routerLinkActive="font-bold">
+    {{ "MEDIJI" | translate }}
+ </a>
+</li>
+<li>
+ <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+    routerLink="/faq" routerLinkActive="font-bold">
+    {{ "FAQ" | translate }}
+ </a>
+</li>
+<li>
+ <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+    routerLink="/contact" routerLinkActive="font-bold">
+    {{ "KONTAKT" | translate }}
+ </a>
+</li>
+</ul>
+</div>
+
 
 
         <!-- Right side: Language Dropdown -->

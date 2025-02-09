@@ -5,42 +5,53 @@
 .nav-underline .nav-link:hover {
     color: #FF0000;
 
-    transition : color 0.3s ease;
+    transition: color 0.3s ease;
     /* Change text color on hover */
 }
 
 .nav-underline .nav-link.active {
     color: #FF0000 !important;
 
-    transition : color 0.3s ease;
+    transition: color 0.3s ease;
     /* Change text color for active link */
 }
 
 .nav-link {
     position: relative;
-    cursor : default;
-    color: #FFF; /* adjust as needed */
-  }
-  
-  .nav-link::before {
+    cursor: default;
+    color: #FFF;
+    /* adjust as needed */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #FF0000 !important;
+    /* Red on hover/focus */
+    font-weight: bold;
+}
+
+.nav-link::before {
     content: "";
     position: absolute;
     bottom: -2px;
     right: 0;
     width: 100%;
     height: 2px;
-    background-color: #FF0000; /* adjust color as needed */
+    background-color: #FF0000;
+    /* adjust color as needed */
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
-  }
-  
-  .nav-link:hover::before {
+}
+
+.nav-link:hover::before {
     transform: scaleX(1);
-  }
+}
+
 
 .transparent-bg {
-    background-color: rgba(3, 7, 18, 0.6); /* Gray-950 with 70% opacity */
+    background-color: rgba(3, 7, 18, 0.6);
+    /* Gray-950 with 70% opacity */
 }
 
 body {
@@ -57,21 +68,28 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: url('../public/bg-still1.jpg');
-    background-size: cover; /* Ensures the image covers the entire viewport */
-    background-position: center; /* Centers the image */
-    filter: blur(3px) brightness(0.75); /* Blur and darken the image */
-    z-index: -1; /* Ensure it stays behind the content */
+    background-size: cover;
+    /* Ensures the image covers the entire viewport */
+    background-position: center;
+    /* Centers the image */
+    filter: blur(3px) brightness(0.75);
+    /* Blur and darken the image */
+    z-index: -1;
+    /* Ensure it stays behind the content */
     animation: contrastPulse 5s infinite ease-in-out;
 }
 
 @keyframes contrastPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         filter: blur(4px) brightness(0.75);
-        transform : scaleX(1);
+        transform: scaleX(1);
     }
+
     50% {
         filter: blur(3px) brightness(1);
-        transform : scaleX(1.01);
+        transform: scaleX(1.01);
     }
 }
 
@@ -81,6 +99,12 @@ body {
     position: relative;
     z-index: 1;
 }
+
+.hero-button {
+    border-radius: 9999px !important; /* Use !important to override conflicting styles */
+    width: 3rem;
+    height: 3rem;
+  }
 
 
 .ibm-plex-mono-thin {
@@ -166,3 +190,4 @@ body {
     font-weight: 700;
     font-style: italic;
 }
+

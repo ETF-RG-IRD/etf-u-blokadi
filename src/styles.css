@@ -65,8 +65,8 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vw;
     background-image: url('../public/bg-still1.jpg');
     background-size: cover;
     /* Ensures the image covers the entire viewport */
@@ -78,6 +78,20 @@ body::before {
     /* Ensure it stays behind the content */
     animation: contrastPulse 5s infinite ease-in-out;
 }
+
+/* ------- Prevents the everything moving bcs of the scrollbar ------- */
+html {
+    scrollbar-gutter: stable both-sides;
+    overflow-x: hidden;
+}
+
+.screen-stable {
+    position: relative;
+    left: calc((100vw - 100%) / 2);
+    
+}
+/* -------------------------------------------------------------------- */
+
 
 @keyframes contrastPulse {
 

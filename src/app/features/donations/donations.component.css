@@ -10,8 +10,8 @@
   .custom-button {
     position: absolute;
     top: 80%;
-    left: 49%;
-    z-index: 1000;
+    left: 47%;
+    z-index: 999;
     background-color: #8B0000;
     color: #fff;
     padding: 5px 10px;

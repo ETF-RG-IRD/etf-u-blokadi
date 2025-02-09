@@ -25,10 +25,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/leaflet/images",
+                "output": "images/"
               }
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/leaflet/dist/leaflet.css",
               "src/styles.css"
             ],
             "scripts": [

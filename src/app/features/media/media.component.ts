@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ElementRef, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from '../loader/loader.component';
+import { LoaderComponent } from '../../layout/loader/loader.component';
 
 @Component({
   selector: 'app-media',

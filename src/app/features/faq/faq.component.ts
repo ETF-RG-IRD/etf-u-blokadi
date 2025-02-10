@@ -1,28 +1,48 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-faq',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './faq.component.html',
   styleUrl: './faq.component.css'
 })
-
 export class FaqComponent {
-    faqItems = [
-      { question: "Šta je plenum?", answer: "Studentski plenumi su direktno demokratsko-borbene strukture. Kao otvoreni forumi, gde svaki student ima pravo da diskutuje i glasa o pitanjima strategije i taktike studentske socijalne borbe. Odluke plenuma su javne, podložne kritikama i izmenama od strane učesnika plenuma. To plenum čini neuporedivo otpornijim na tajne manevre i malverzacije iza zatvorenih vrata.", isOpen: false },
-      { question: "Replika", answer: "Replika je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.", isOpen: false },
-      { question: "Pitanje", answer: "Pitanje je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.", isOpen: false },
-      { question: "Nova reč", answer: "Nova reč je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.", isOpen: false },
-      { question: "Tehnička replika", answer: "Tehnička replika je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.", isOpen: false },
-      { question: "Kako mogu da pomognem?", answer: "Donacijama (link) i izlaženjem na proteste.", isOpen: false },
-      { question: "Ko može da učestvuje u plenumu?", answer: "Svi studenti i studentkinje.", isOpen: false },
-      { question: "Kako se donacije koriste?", answer: "Donacije se koriste za pokrivanje troškova protesta, štampanje letaka, organizaciju performansa i drugih događaja.", isOpen: false },
-      { question: "Šta su radne grupe?", answer: "Radne grupe su grupe studenata i studentkinja koje se bave određenim temama i zadacima. Radne grupe su otvorene za sve zainteresovane studente i studentkinje.", isOpen: false },
-      { question: "Kako mogu da se uključim u radne grupe?", answer: "Možeš da se uključiš u radne grupe tako što ćeš posetiti neki od plenuma i izraziti svoju želju da se uključiš u radnu grupu koja te zanima.", isOpen: false }
+  faqItems = [
+    { question: 'faq.question1', answer: 'faq.answer1', isOpen: false },
+    { question: 'faq.question2', answer: 'faq.answer2', isOpen: false },
+    { question: 'faq.question3', answer: 'faq.answer3', isOpen: false },
+    { question: 'faq.question4', answer: 'faq.answer4', isOpen: false },
+    { question: 'faq.question5', answer: 'faq.answer5', isOpen: false },
+    { question: 'faq.question6', answer: 'faq.answer6', isOpen: false },
+    { question: 'faq.question7', answer: 'faq.answer7', isOpen: false },
+    { question: 'faq.question8', answer: 'faq.answer8', isOpen: false },
+    { question: 'faq.question9', answer: 'faq.answer9', isOpen: false },
+    { question: 'faq.question10', answer: 'faq.answer10', isOpen: false }
   ];
 
+  constructor(private translate: TranslateService) {
+    this.translate.get([
+      'faq.question1', 'faq.answer1', 
+      'faq.question2', 'faq.answer2', 
+      'faq.question3', 'faq.answer3',
+      'faq.question4', 'faq.answer4',
+      'faq.question5', 'faq.answer5',
+      'faq.question6', 'faq.answer6',
+      'faq.question7', 'faq.answer7',
+      'faq.question8', 'faq.answer8',
+      'faq.question9', 'faq.answer9',
+      'faq.question10', 'faq.answer10'
+    ]).subscribe(translations => {
+      this.faqItems.forEach((item, index) => {
+        item.question = translations[`faq.question${index + 1}`];
+        item.answer = translations[`faq.answer${index + 1}`];
+      });
+    });
+  }
+
   toggleItem(index: number): void {
-      this.faqItems[index].isOpen = !this.faqItems[index].isOpen;
+    this.faqItems[index].isOpen = !this.faqItems[index].isOpen;
   }
 }

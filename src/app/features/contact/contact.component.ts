@@ -3,11 +3,12 @@ import { Component, ChangeDetectorRef, ElementRef, Renderer2, AfterViewChecked, 
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   encapsulation: ViewEncapsulation.None, // Ensures CSS works on dynamically added elements
@@ -26,14 +27,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class ContactComponent implements AfterViewChecked {
-  contactLines: string[] = [
-    'root@terminal:~$ Elektrotehnički fakultet - <span class="copyable" data-email="plenum@etf.rs">plenum@etf.rs</span>',
-    'root@terminal:~$ Građevinski fakultet - <span class="copyable" data-email="grfblokada@gmail.com">grfblokada@gmail.com</span>',
-    'root@terminal:~$ Arhitektonski fakultet - <span class="copyable" data-email="studenti.arhitekture.bg@edu.arh.bg.ac.rs">studenti.arhitekture.bg@edu.arh.bg.ac.rs</span>',
-    'root@terminal:~$ Tehnološko-metalurški fakultet - <span class="copyable" data-email="tmf.bl0kada24@gmail.com">tmf.bl0kada24@gmail.com</span>',
-    'root@terminal:~$ Mašinski fakultet - <span class="copyable" data-email="masinskiplenum@gmail.com">masinskiplenum@gmail.com</span>',
-    'root@terminal:~$ '
-  ];
+  contactLines: string[] = [];
 
   // Changed type to string for simpler concatenation
   displayText: string = "";
@@ -51,13 +45,34 @@ export class ContactComponent implements AfterViewChecked {
     private cdr: ChangeDetectorRef,
     private elRef: ElementRef,
     private renderer: Renderer2,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private translate: TranslateService
   ) {
-    this.typeText();
+    this.loadTranslations();
     setInterval(() => {
       this.cdr.detectChanges();
       this.toggleCursorVisibility();
     }, 500);
+  }
+
+  loadTranslations(): void {
+    this.translate.get([
+      'SCHOOLS.ETF',
+      'SCHOOLS.GRAĐEVINSKI',
+      'SCHOOLS.ARHITEKTONSKI',
+      'SCHOOLS.TMF',
+      'SCHOOLS.MAŠINSKI'
+    ]).subscribe(translations => {
+      this.contactLines = [
+        `root@terminal:~$ ${translations['SCHOOLS.ETF']} - <span class="copyable" data-email="plenum@etf.rs">plenum@etf.rs</span>`,
+        `root@terminal:~$ ${translations['SCHOOLS.GRAĐEVINSKI']} - <span class="copyable" data-email="grfblokada@gmail.com">grfblokada@gmail.com</span>`,
+        `root@terminal:~$ ${translations['SCHOOLS.ARHITEKTONSKI']} - <span class="copyable" data-email="studenti.arhitekture.bg@edu.arh.bg.ac.rs">studenti.arhitekture.bg@edu.arh.bg.ac.rs</span>`,
+        `root@terminal:~$ ${translations['SCHOOLS.TMF']} - <span class="copyable" data-email="tmf.bl0kada24@gmail.com">tmf.bl0kada24@gmail.com</span>`,
+        `root@terminal:~$ ${translations['SCHOOLS.MAŠINSKI']} - <span class="copyable" data-email="masinskiplenum@gmail.com">masinskiplenum@gmail.com</span>`,
+        'root@terminal:~$ '
+      ];
+      this.typeText(); // Start typing after translations are loaded
+    });
   }
 
   ngAfterViewChecked(): void {

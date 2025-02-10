@@ -3,6 +3,7 @@ import { Component, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
 import * as L from 'leaflet';
 import { CommonModule } from '@angular/common';
 import { DonationDataService, DonationData } from './donations.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 // Fix for default marker icon issues in many build setups:
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -15,7 +16,7 @@ L.Icon.Default.mergeOptions({
 @Component({
   selector: 'app-donations',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './donations.component.html',
   styleUrls: ['./donations.component.css']
 })

@@ -1,0 +1,64 @@
+{
+    "ZAHTEVI": "Demands",
+    "NAJAVE": "Announcements",
+    "INCIDENTI": "Incidents",
+    "MEDIJI": "Media",
+    "FAQ": "FAQ",
+    "KONTAKT": "Contact",
+    "DONATIONS": "Donations",
+    "typewriter": {
+        "text1": "Demands are not fulfilled",
+        "text2": "Technical schools in blockade"
+    },
+    "zahtev1": {
+        "naslov": "1. Publication of all documentation regarding the reconstruction of the railway station in Novi Sad, which is currently unavailable to the public",
+        "sadrzaj": "Students have requested the complete publication of documentation related to the reconstruction of the Novi Sad Railway Station. The initial response was that the documentation was only held by the Prosecutor's Office, but shortly after, incomplete documents were released by other state authorities. Our colleagues from technical schools, as well as the Association of Architects of Serbia, noticed that the published documents lacked key documentation necessary to determine the criminal liability of those who managed and worked on the station's reconstruction. Specifically, missing are the contracts showing who did what at the station, how much it cost, why the reconstruction cost increased fivefold, and who is responsible for the station being ceremoniously opened twice without a usage permit."
+    },
+    "zahtev2": {
+        "naslov": "2. We demand confirmation from the relevant authorities regarding the identity of all individuals reasonably suspected of physically attacking students and professors, as well as the initiation of criminal proceedings against them. We also demand the dismissal of these individuals if they hold public office.",
+        "sadrzaj": "Due to the inaction of the Ministry of Internal Affairs regarding this request, a full professor and dean of the Faculty of Dramatic Arts (FDU) filed a criminal complaint with the Third Basic Public Prosecutor's Office on behalf of the faculty on December 2, 2024. The complaint pertains to individuals suspected of physically assaulting students and professors of the faculty on November 22, 2024, committing the criminal offense of Violent Behavior as well as Violent Behavior at a Public Gathering or Sporting Event. <br> The identified individuals, according to the Higher Public Prosecutor's Office in Belgrade, are: Milija Koldžić, Aleksandar Jokić, Dušan Kostić, Milena Aleksić, Ivan Stanišić."
+    },
+    "zahtev3": {
+        "naslov": "3. Dismissal of criminal charges against arrested and detained students at protests, as well as the termination of already initiated criminal proceedings.",
+        "sadrzaj": "In the previous period, government representatives stated that all participants of the civil protests had been released. However, this does not mean the request has been fulfilled. The reason is that release from detention does not guarantee that these individuals will not be criminally prosecuted or convicted. Therefore, we demand that all criminal charges against students and professors participating in protests be dismissed, and if legal proceedings are underway, they should be terminated."
+    },
+    "zahtev4": {
+        "naslov": "4. Increasing the budget for higher education by 20%",
+        "sadrzaj": "Allocations for higher education in the 2025 Budget Law of the Republic of Serbia amount to 84.9 billion dinars. Students have rightly demanded a 20% increase in allocated funds (approximately 16.98 billion dinars or 145.1 million euros), which would bring investment levels closer to those of Central and Eastern European countries (1.71%, according to OECD methodology). The announced increase in 'material costs' by 20% would only raise the total budget by 3% (22 million euros). 'Material costs' only represent a segment of the higher education budget. This vague presentation of the increase, along with the insufficient amount offered, is unacceptable. Instead of improving the quality of higher education, the public was misled into believing the demand had been met. Accessibility, affordability, and quality of higher education are the standards of a progressive society, and its funding should not be in question. The state must ensure conditions where higher education is available to all, with quality that competes on global university rankings. State subsidies for ECTS credits would significantly ease study conditions at all levels and enable greater participation of financially disadvantaged groups in higher education. Therefore, we propose that subsidies be applied through tuition fees, covering 50% of the cost per ECTS credit. Limited faculty capacities for scientific research hinder technological and economic potential, while underfunding research leads to the devaluation of expertise and encourages brain drain. We demand an increase in funds for technical and infrastructural maintenance of faculties to create better conditions for scientific research in the country."
+    },
+    "SCHOOLS": {
+        "ETF": "School of Electrical Engineering",
+        "GRAĐEVINSKI": "School of Civil Engineering",
+        "ARHITEKTONSKI": "School of Architecture",
+        "TMF": "School of Technology and Metallurgy",
+        "MAŠINSKI": "School of Mechanical Engineering"
+    },
+    "STATUS": {
+        "FULFILLED": "Fulfilled",
+        "NOT_FULFILLED": "Not fulfilled"
+    },
+    "PROGRESS": "Currently in progress",
+    "faq": {
+        "question1": "What is a plenum?",
+        "answer1": "Student plenums are directly democratic and militant structures. As open forums, every student has the right to discuss and vote on the strategy and tactics of student social struggles. Plenum decisions are public, subject to critique and modification by participants, making them more resistant to secret maneuvers and behind-the-scenes manipulations.",
+        "question2": "Rebuttal",
+        "answer2": "A rebuttal is the right to speak following a speaker's presentation, referring to their statement.",
+        "question3": "Question",
+        "answer3": "A question is the right to speak following a speaker's presentation, referring to their statement.",
+        "question4": "New speech",
+        "answer4": "New speech is the right to speak following a speaker's presentation, referring to their statement.",
+        "question5": "Technical rebuttal",
+        "answer5": "A technical rebuttal is the right to speak following a speaker's presentation, referring to their statement.",
+        "question6": "How can I help?",
+        "answer6": "Through donations (link) and attending protests.",
+        "question7": "Who can participate in the plenum?",
+        "answer7": "All students.",
+        "question8": "How are donations used?",
+        "answer8": "Donations are used to cover protest costs, print leaflets, organize performances, and other events.",
+        "question9": "What are action groups?",
+        "answer9": "Action groups consist of students focused on specific topics and tasks. They are open to all interested students.",
+        "question10": "How can I join a action group?",
+        "answer10": "You can join a action group by attending a plenum and expressing your interest in a specific group."
+    },
+    "COMMON_QUESTIONS": "Frequently Asked Questions"
+}

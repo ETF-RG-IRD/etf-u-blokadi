@@ -5,9 +5,60 @@
     "MEDIJI": "Mediji",
     "FAQ": "FAQ",
     "KONTAKT": "Kontakt",
-    "DONACIJE": "Donacije",
+    "DONATIONS": "Donacije",
     "typewriter": {
         "text1": "Zahtevi nisu ispunjeni",
         "text2": "Tehnički fakulteti u blokadi"
-    }
+    },
+    "zahtev1": {
+        "naslov": "1. Objava cele dokumentacije koja se tiče rekonstruisanja železničke stanice u Novom Sadu koja je trenutno nedostupna javnosti",
+        "sadrzaj": "Studenti su zahtevali da se objavi kompletna dokumentacija u vezi sa rekonstrukcijom Železničke stanice u Novom Sadu. Prvobitni odgovor na ovako postavljen zahtev bio je da dokumentacijom raspolaže samo Tužilaštvo, da bi ubrzo nakon toga ona bila nepotpuno objavljena od strane drugih državnih organa. Naše kolege sa tehničkih fakulteta, kao i sa Udruženja arhitekata Srbije, uočile su da u objavljenim dokumentima nedostaje ključna dokumentacija neophodna za utvrđivanje krivične odgovornosti lica koja su rukovodila rekonstrukcijom Železničke stanice i bila na njoj angažovana. Konkretno nedostaju ugovori koji pokazuju ko je šta radio na Železničkoj stanici i koliko je to koštalo, zašto je cena rekonstrukcije skočila pet puta, kao i ko je odgovoran što je Železnička stanica dva puta svečano otvarana bez upotrebne dozvole."
+    },
+    "zahtev2": {
+        "naslov": "2. Zahtevamo potvrdu nadležnih organa o identitetu svih lica za koja postoji osnovana sumnja da su fizički napala studente i profesore, kao i pokretanje krivičnih postupaka protiv njih. Takođe zahtevamo razrešenje pomenutih lica ukoliko se pokaže da su ista javni funkcioneri.",
+        "sadrzaj": " Zbog neažurnosti MUP-a u pogledu navedenog zahteva, redovni profesor i dekan Fakulteta dramskih umetnosti (FDU) je 2.12.2024. u ime fakulteta podneo krivičnu prijavu Trećem osnovnom javnom tužilaštvu. Podneta krivična prijava se odnosi na lica za koja postoji osnovana sumnja da su dana 22.11.2024. fizički nasrnula na studente i profesore pomenutog fakulteta, te da su izvršila krivično delo Nasilničko ponašanje kao i Nasilničko ponašanje na javnom skupu ili sportskoj priredbi <br> Navedena lica, koja je identifikovalo Više javno tužilaštvo u Beogradu, su: Milija Koldžić, Aleksandar Jokić, Dušan Kostić, Milena Aleksić, Ivan Stanišić"
+    },
+    "zahtev3": {
+        "naslov": "3. Odbacivanje krivičnih prijava protiv uhapšenih i privedenih studenata na protestima, kao i obustavu već pokrenutih krivičnih postupaka.",
+        "sadrzaj": " U prethodnom periodu predstavnici vlasti su konstatovali da su svi učesnici građanskih protesta pušteni na slobodu. Međutim, to se ne smatra uspunjenjem zahteva. Razlog koji stoji iza toga jeste taj što puštanje na slobodu iz pritvora ne garantuje da ta lica neće biti krivično gonjena, niti da protiv njih neće biti doneta osuđujuća presuda. U skladu s iznetim, zahtevamo da se protiv svih studenata i profesora učesnika građanskih protesta odbace krivične prijave, a ukoliko je krivični postupak u toku, da se isti obustavi."
+    },
+    "zahtev4": {
+        "naslov": "4. Povećanje budžeta za visoko obrazovanje u iznosu od 20%",
+        "sadrzaj": "Izdvajanja za visoko obrazovanje predviđena Zakonom o budžetu Republike Srbije za 2025. godinu iznose 84,9 milijardi dinara. Studenti su sa punim pravom tražili povećanje u iznosu od 20% namenjenih sredstava (povećanje za oko 16,98 milijardi dinara odnosno 145,1 miliona evra) – koje bi nivo ulaganja u visoko obrazovanje približilo nivou ulaganja zemalja centralne i istočne Evrope (1,71%, prema metodologiji OECD).1 2 Najavljeno je povećanje „materijalnih troškova“ za 20% - što bi dovelo do povećanja ukupnog budžeta u iznosu od tek 3% (22 miliona evra). „Materijalni troškovi“, dakle, označavaju tek segment budžeta za visoko obrazovanje. Ovako nejasan način predstavljanja povećanja, uz sam po sebi nedovoljan ponuđeni iznos, nije prihvatljiv. Umesto zahtevanog poboljšanja kvaliteta visokog obrazovanja, deo javnosti je doveden u zabludu da je zahtev ispunjen. Dostupnost, pristupačnost i kvalitet visokog obrazovanja su standard progresivnog društva i njegovo finansiranje ne sme biti upitno. Država je dužna da obezbedi uslove u kojima je visoko obrazovanje izbor koji je dostupan svima, uz kvalitet koji je konkurentan na svetskim rang listama univerziteta. Subvencionisanjem ESPB bodova od strane države, značajno bi se olakšali uslovi studiranja na svim nivoima studija, te omogućila veća participacija finansijski ugroženih kategorija društva u visokom obrazovanju. Stoga, ​​predlažemo da subvencionisanje bude izvršeno preko školarina, a na nivou pojedinačnog ESPB boda tako da iznosi 50% cene od one koju bi inače platili studenti. Ograničeni kapaciteti fakulteta za bavljenje naučno-istraživačkim radom sputavaju društvo u pogledu tehnoloških i ekonomskih potencijala, dok nedovoljno finansiranje istraživanja posledično dovodi do devaluacije stručnog kadra i podstiče njegovo iseljavanje iz zemlje. Zahtevamo povećanje sredstava za tehničko i infrastrukturno održavanje fakulteta, kako bi se stvorili kvalitetniji uslovi naučno-istraživačkog rada u zemlji."
+    },
+    "SCHOOLS": {
+        "ETF": "Електротехнички факултет",
+        "GRAĐEVINSKI": "Грађевински факултет",
+        "ARHITEKTONSKI": "Архитектонски факултет",
+        "TMF": "Технолошко-металуршки факултет",
+        "MAŠINSKI": "Машински факултет"
+    },
+    "STATUS": {
+        "FULFILLED": "Ispunjen",
+        "NOT_FULFILLED": "Nije ispunjen"
+    },
+    "PROGRESS": "Trenutno u izradi",
+    "faq": {
+        "question1": "Šta je plenum?",
+        "answer1": "Studentski plenumi su direktno demokratsko-borbene strukture. Kao otvoreni forumi, gde svaki student ima pravo da diskutuje i glasa o pitanjima strategije i taktike studentske socijalne borbe. Odluke plenuma su javne, podložne kritikama i izmenama od strane učesnika plenuma. To plenum čini neuporedivo otpornijim na tajne manevre i malverzacije iza zatvorenih vrata.",
+        "question2": "Replika",
+        "answer2": "Replika je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.",
+        "question3": "Pitanje",
+        "answer3": "Pitanje je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.",
+        "question4": "Nova reč",
+        "answer4": "Nova reč je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.",
+        "question5": "Tehnička replika",
+        "answer5": "Tehnička replika je pravo govora koje sledi nakon izlaganja govornika, a koje se odnosi na izlaganje govornika.",
+        "question6": "Kako mogu da pomognem?",
+        "answer6": "Donacijama (link) i izlaženjem na proteste.",
+        "question7": "Ko može da učestvuje u plenumu?",
+        "answer7": "Svi studenti i studentkinje.",
+        "question8": "Kako se donacije koriste?",
+        "answer8": "Donacije se koriste za pokrivanje troškova protesta, štampanje letaka, organizaciju performansa i drugih događaja.",
+        "question9": "Šta su radne grupe?",
+        "answer9": "Radne grupe su grupe studenata i studentkinja koje se bave određenim temama i zadacima. Radne grupe su otvorene za sve zainteresovane studente i studentkinje.",
+        "question10": "Kako mogu da se uključim u radne grupe?",
+        "answer10": "Možeš da se uključiš u radne grupe tako što ćeš posetiti neki od plenuma i izraziti svoju želju da se uključiš u radnu grupu koja te zanima."
+    },
+    "COMMON_QUESTIONS": "Česta pitanja"
 }

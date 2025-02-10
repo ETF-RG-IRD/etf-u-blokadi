@@ -9,7 +9,7 @@
                         "ZAHTEVI"
                         | translate }}</a></li>
                 <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-                        routerLink="/donations" routerLinkActive="active">{{ "DONACIJE" | translate }}</a></li>
+                        routerLink="/donations" routerLinkActive="active">{{ "DONATIONS" | translate }}</a></li>
                 <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
                         routerLink="/announcements" routerLinkActive="font-bold">{{ "NAJAVE" | translate }}</a></li>
                 <li><a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
@@ -32,56 +32,55 @@
             </svg>
         </button>
 
- <!-- Mobile nav menu dropdown -->
-<div *ngIf="navDropdownOpen"
-@listAnimation
-class="absolute top-full left-0 w-full bg-zinc-900 backdrop-filter backdrop-blur-lg border-b rounded-lg border-zinc-700/10 shadow-md md:hidden">
-<ul (click)="toggleNavDropdown()"
- class="flex flex-col md:flex-row md:gap-8 gap-3 px-2 md:my-1 my-3 items-center flex-wrap">
-<li>
- <a class="nav-link" routerLink="/" routerLinkActive="text-red-500"
-    [routerLinkActiveOptions]="{ exact: true }">
-    {{ "ZAHTEVI" | translate }}
- </a>
-</li>
-<li>
- <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-    routerLink="/donations" routerLinkActive="active">
-    {{ "DONACIJE" | translate }}
- </a>
-</li>
-<li>
- <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-    routerLink="/announcements" routerLinkActive="font-bold">
-    {{ "NAJAVE" | translate }}
- </a>
-</li>
-<li>
- <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-    routerLink="/incidents" routerLinkActive="font-bold">
-    {{ "INCIDENTI" | translate }}
- </a>
-</li>
-<li>
- <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-    routerLink="/media" routerLinkActive="font-bold">
-    {{ "MEDIJI" | translate }}
- </a>
-</li>
-<li>
- <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-    routerLink="/faq" routerLinkActive="font-bold">
-    {{ "FAQ" | translate }}
- </a>
-</li>
-<li>
- <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
-    routerLink="/contact" routerLinkActive="font-bold">
-    {{ "KONTAKT" | translate }}
- </a>
-</li>
-</ul>
-</div>
+        <!-- Mobile nav menu dropdown -->
+        <div *ngIf="navDropdownOpen" @listAnimation
+            class="absolute top-full left-0 w-full bg-zinc-900 backdrop-filter backdrop-blur-lg border-b rounded-lg border-zinc-700/10 shadow-md md:hidden">
+            <ul (click)="toggleNavDropdown()"
+                class="flex flex-col md:flex-row md:gap-8 gap-3 px-2 md:my-1 my-3 items-center flex-wrap">
+                <li>
+                    <a class="nav-link" routerLink="/" routerLinkActive="text-red-500"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                        {{ "ZAHTEVI" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+                        routerLink="/donations" routerLinkActive="active">
+                        {{ "DONATIONS" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+                        routerLink="/announcements" routerLinkActive="font-bold">
+                        {{ "NAJAVE" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+                        routerLink="/incidents" routerLinkActive="font-bold">
+                        {{ "INCIDENTI" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+                        routerLink="/media" routerLinkActive="font-bold">
+                        {{ "MEDIJI" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+                        routerLink="/faq" routerLinkActive="font-bold">
+                        {{ "FAQ" | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link hover:text-red-500 hover:underline hover:font-bold focus:text-red-500 focus:underline focus:font-bold"
+                        routerLink="/contact" routerLinkActive="font-bold">
+                        {{ "KONTAKT" | translate }}
+                    </a>
+                </li>
+            </ul>
+        </div>
 
 
 
@@ -90,7 +89,7 @@ class="absolute top-full left-0 w-full bg-zinc-900 backdrop-filter backdrop-blur
             class="relative flex items-center mx-2 md:order-2 gap-1 md:gap-0 rounded-lg border border-transparent hover:bg-gray-700">
             <button (click)="toggleLangDropdown()" type="button" data-dropdown-toggle="language-dropdown-menu"
                 class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white rounded-lg cursor-pointer inset-shadow-sm">
-                {{ siteLangugage }} ▼
+                {{ siteLanguage }} ▼
             </button>
             <div *ngIf="langDropdownOpen"
                 class="absolute items-center fit-container top-6 z-50 my-4 text-base list-none bg-white/5 divide-white rounded-lg shadow-md"

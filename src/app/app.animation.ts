@@ -1,4 +1,4 @@
-// route.animations.ts
+// app.animation.ts
 import {
   trigger,
   transition,

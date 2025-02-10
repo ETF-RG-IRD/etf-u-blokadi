@@ -19,8 +19,8 @@
           <!-- Accordion Content -->
           <div class="accordion-content overflow-hidden transparent-bg bg-gray-950 rounded-lg transition-all duration-200"
             [ngStyle]="{ 'max-height': item.isOpen ? '5000px' : '0' }">
-            <div class="p-4">
-              {{ item.content }}
+            <div class="p-4" [innerHTML]="item.content">
+              <!-- pogledaj innerHtml u ovom div-u korisno za ubacivanje html tagova u json fajl, npr <br> -->
             </div>
             <div>
               <h3 class="text-center !font-extrabold animate-pulse-fast 
@@ -28,7 +28,7 @@
                             '!text-red-500 drop-shadow-red': !item.isFulfilled,
                             '!text-green-500 drop-shadow-green': item.isFulfilled
                           }">
-                {{item.isFulfilled ? 'ISPUNJEN' : 'NIJE ISPUNJEN'}}
+              {{ item.isFulfilled ? 'STATUS.FULFILLED' : 'STATUS.NOT_FULFILLED' | translate }}
               </h3>
             </div>
           </div>

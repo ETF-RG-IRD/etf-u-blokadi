@@ -41,19 +41,19 @@ import {
   ]
 })
 export class NavBarComponent {
-  siteLangugage = 'Српски';
+  siteLanguage = 'Српски';
   navDropdownOpen = false;
   langDropdownOpen = false;
   languageList = [
     { code: 'sr-cyr', label: 'Српски' },
     { code: 'sr-lat', label: 'Srpski' },
+    { code: 'en', label: 'English' }
   ];
 
   constructor(private translate: TranslateService) {
-    const savedLang = localStorage.getItem('selectedLanguage') || 'sr-cyr';
-    this.translate.setDefaultLang(savedLang);
-    this.translate.use(savedLang);
-    this.siteLangugage = this.languageList.find(lang => lang.code === savedLang)?.label || 'Српски';
+    // Set the initial language label based on the current language
+    const currentLang = this.translate.currentLang || 'sr-cyr';
+    this.siteLanguage = this.languageList.find(lang => lang.code === currentLang)?.label || 'Српски';
   }
 
   toggleLangDropdown(): void {
@@ -69,13 +69,12 @@ export class NavBarComponent {
       .find((language) => language.code === localeCode)
       ?.label.toString();
     if (selectedLanguage) {
-      this.siteLangugage = selectedLanguage;
+      this.siteLanguage = selectedLanguage;
       this.translate.use(localeCode).subscribe(() => {
         localStorage.setItem('selectedLanguage', localeCode);
         window.location.reload();
       });
     }
     this.langDropdownOpen = false;
-    console.log('currentLanguage', this.translate.currentLang);
   }
 }

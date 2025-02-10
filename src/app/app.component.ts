@@ -3,10 +3,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { TypewriterComponent } from "./shared/typewriter/typewriter.component";
 import { LoaderComponent } from './layout/loader/loader.component';
-import { NgxTranslateModule } from './shared/translate/translate.module';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { slideInAnimation } from './app.animation'; // Import your animation trigger
 import { filter } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,6 @@ import { filter } from 'rxjs/operators';
     RouterOutlet,
     TypewriterComponent,
     LoaderComponent,
-    NgxTranslateModule,
     NavBarComponent,
   ],
   templateUrl: './app.component.html',
@@ -31,7 +30,18 @@ export class AppComponent {
   showButton = true; // Button visibility control
   buttonVisible = true; // Control the fade-in/out effect
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private translate: TranslateService) {
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if (savedLang) {
+      this.translate.setDefaultLang(savedLang);
+      this.translate.use(savedLang);
+    } else {
+      this.translate.setDefaultLang('sr-cyr');
+      this.translate.use('sr-cyr');
+      localStorage.setItem('selectedLanguage', 'sr-cyr'); // Ensure it's stored
+    }
+
+
     // On initial load - spinner
     window.addEventListener('load', () => {
       const delay = Math.floor(Math.random() * (1500 - 500 + 1)) + 500;
@@ -40,13 +50,17 @@ export class AppComponent {
       }, delay);
     });
 
-    //
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         console.log("Current URL:", event.url);
         this.showHero = event.url === '/';
       });
+  }
+
+  gOnInit(): void {
+    // Load the language from localStorage (or use default)
+
   }
 
   ngAfterViewInit(): void {

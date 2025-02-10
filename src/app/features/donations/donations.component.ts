@@ -1,6 +1,8 @@
+// donations.component.ts
 import { Component, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
 import * as L from 'leaflet';
 import { CommonModule } from '@angular/common';
+import { DonationDataService, DonationData } from './donations.service';
 
 // Fix for default marker icon issues in many build setups:
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -19,13 +21,13 @@ L.Icon.Default.mergeOptions({
 })
 export class DonationsComponent implements AfterViewInit, OnDestroy {
   private map!: L.Map;
-
   private readonly BELGRADE_CENTER: L.LatLngExpression = [44.7866, 20.4489];
   private readonly BELGRADE_BOUNDS = L.latLngBounds(
     L.latLng(44.70, 20.30),
     L.latLng(44.90, 20.60)
   );
 
+  // Sample locations for demonstration; keys should match the school names from the donation data.
   private readonly LOCATIONS = new Map<string, [number, number]>([
     ["Arhitektonski Fakultet", [20.476271197910265, 44.805254076225896]],
     //["Gradjevinski Fakultet", [20.4770000000000, 44.805254076225896]],
@@ -66,7 +68,6 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     popupAnchor: [0, -32]
   });
 
-
   private etfIcon = L.icon({
     iconUrl: './map-pin-red.png',
     iconSize: [32, 32],
@@ -74,18 +75,24 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     popupAnchor: [0, -32]
   });
   
-
-  constructor(private ngZone: NgZone) {}
+  constructor(
+    private ngZone: NgZone,
+    private donationDataService: DonationDataService
+  ) {}
 
   ngAfterViewInit(): void {
     this.ngZone.runOutsideAngular(() => {
       this.initMap();
-      this.addMarkers();
-      
-      setTimeout(() => {
-        this.map.invalidateSize();
-        this.map.setView(this.BELGRADE_CENTER, 13);
-      }, 100);
+
+      // When the donation data is loaded, add markers using that data.
+      this.donationDataService.getDonations().subscribe((donations: DonationData) => {
+        // Delay a little to let the map initialize.
+        setTimeout(() => {
+          this.addMarkers(donations);
+          this.map.invalidateSize();
+          this.map.setView(this.BELGRADE_CENTER, 13);
+        }, 100);
+      });
 
       window.addEventListener('resize', this.debouncedResize);
     });
@@ -126,14 +133,25 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     window.removeEventListener('resize', this.debouncedResize);
   }
 
-  private addMarkers(): void {
+  // Update addMarkers() to include donation info from the API.
+  private addMarkers(donations: { [school: string]: string[] } = {}): void {
     Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
-      // Choose icon based on the location name
+      // Choose icon based on the location name.
       const iconToUse = name === 'ETF' ? this.etfIcon : this.customIcon;
       
+      // Build the popup content.
+      let popupContent = `<strong>${name}</strong>`;
+      if (donations[name] && donations[name].length) {
+        popupContent += `<br/><em>Potrebno:</em><ul>`;
+        donations[name].forEach(item => {
+          popupContent += `<li>${item}</li>`;
+        });
+        popupContent += `</ul>`;
+      }
+
       const marker = L.marker([coordinates[1], coordinates[0]], { icon: iconToUse })
         .addTo(this.map)
-        .bindPopup(name, { autoClose: false, closeOnClick: false });
+        .bindPopup(popupContent, { autoClose: false, closeOnClick: false });
       
       marker.on('mouseover', () => {
         marker.getPopup()?.getElement()?.classList.add('fade-in');
@@ -146,5 +164,4 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
       });
     });
   }
-  
 }

@@ -1,0 +1,19 @@
+// donation-data.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface DonationData {
+  [school: string]: string[];
+}
+
+@Injectable({ providedIn: 'root' })
+export class DonationDataService {
+  private apiUrl = 'http://localhost:3000/api/donations'; // update this URL as needed
+
+  constructor(private http: HttpClient) {}
+
+  getDonations(): Observable<DonationData> {
+    return this.http.get<DonationData>(this.apiUrl);
+  }
+}

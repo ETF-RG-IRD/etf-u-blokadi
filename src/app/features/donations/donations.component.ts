@@ -28,10 +28,10 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
 
   private readonly LOCATIONS = new Map<string, [number, number]>([
     ["Arhitektonski Fakultet", [20.476271197910265, 44.805254076225896]],
-    ["Gradjevinski Fakultet", [20.4770000000000, 44.805254076225896]],
+    //["Gradjevinski Fakultet", [20.4770000000000, 44.805254076225896]],
     ["Fakultet Bezbednosti", [20.47895220572107, 44.791339901640825]],
     ["Ekonomski Fakultet", [20.454924904335936, 44.81186202198768]],
-    ["Elektrotehnički Fakultet", [20.476234674090246, 44.80580041357579]],
+    ["ETF", [20.476234674090246, 44.80580041357579]],
     ["Farmaceutski Fakultet", [20.49493490008412, 44.74748077309478]],
     ["Filološki, Biološki i Geografski fakultet", [20.45721637484622, 44.8188929708989]],
     ["Filozofski Fakultet", [20.45701670463771, 44.8190864839996]],
@@ -65,6 +65,15 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     iconAnchor: [16, 32],
     popupAnchor: [0, -32]
   });
+
+
+  private etfIcon = L.icon({
+    iconUrl: './map-pin-red.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32]
+  });
+  
 
   constructor(private ngZone: NgZone) {}
 
@@ -119,7 +128,10 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
 
   private addMarkers(): void {
     Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
-      const marker = L.marker([coordinates[1], coordinates[0]], { icon: this.customIcon })
+      // Choose icon based on the location name
+      const iconToUse = name === 'ETF' ? this.etfIcon : this.customIcon;
+      
+      const marker = L.marker([coordinates[1], coordinates[0]], { icon: iconToUse })
         .addTo(this.map)
         .bindPopup(name, { autoClose: false, closeOnClick: false });
       
@@ -134,4 +146,5 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
       });
     });
   }
+  
 }

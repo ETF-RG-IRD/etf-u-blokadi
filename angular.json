@@ -89,6 +89,7 @@
               "zone.js/testing",
               "@angular/localize/init"
             ],
+            "proxyConfig": "proxy.conf.json",
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {

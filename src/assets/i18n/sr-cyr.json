@@ -5,6 +5,7 @@
     "MEDIJI": "Медији",
     "FAQ": "Често постављена питања",
     "KONTAKT": "Контакт",
+    "DONATIONS_TITLE" : "Донације",
     "DONATIONS": {
         "BUTTON_TOOLTIP": "Посети blokadnedonacije.rs",
         "BUTTON_TEXT": "Донирај"

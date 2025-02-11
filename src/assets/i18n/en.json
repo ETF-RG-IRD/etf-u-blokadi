@@ -5,10 +5,13 @@
     "MEDIJI": "Media",
     "FAQ": "FAQ",
     "KONTAKT": "Contact",
-    "DONATIONS": "Donations",
+    "DONATIONS": {
+        "BUTTON_TOOLTIP": "Visit blokadnedonacije.rs",
+        "BUTTON_TEXT": "Donate"
+      },
     "typewriter": {
         "text1": "Demands are not fulfilled",
-        "text2": "Technical schools in blockade"
+        "text2": "Technical faculties in blockade"
     },
     "zahtev1": {
         "naslov": "1. Publication of all documentation regarding the reconstruction of the railway station in Novi Sad, which is currently unavailable to the public",
@@ -60,5 +63,37 @@
         "question10": "How can I join a action group?",
         "answer10": "You can join a action group by attending a plenum and expressing your interest in a specific group."
     },
-    "COMMON_QUESTIONS": "Frequently Asked Questions"
+    "COMMON_QUESTIONS": "Frequently Asked Questions",
+    "FACULTIES": {
+    "Arhitektonski Fakultet": "Faculty of Architecture",
+    "Fakultet bezbednosti": "Faculty of Security",
+    "Ekonomski Fakultet": "Faculty of Economics",
+    "ETF": "Faculty of Electrical Engineering",
+    "Farmaceutski Fakultet": "Faculty of Pharmacy",
+    "Filološki, Biološki i Geografski fakultet": "Faculty of Philology, Biology and Geography",
+    "Filozofski Fakultet": "Faculty of Philosophy",
+    "Fizički Fakultet": "Faculty of Physics",
+    "Hemijski Fakultet": "Faculty of Chemistry",
+    "MATF": "Faculty of Mathematics",
+    "Mašinski Fakultet": "Faculty of Mechanical Engineering",
+    "Fakultet Politčkih Nauka": "Faculty of Political Sciences",
+    "Poljoprivredni Fakultet": "Faculty of Agriculture",
+    "Pravni Fakultet": "Faculty of Law",
+    "Rektorat UB": "Rectorate of the University of Belgrade",
+    "FASPER": "Faculty of Sports and Physical Education",
+    "Stomatološki Fakultet": "Faculty of Dentistry",
+    "TMF": "Faculty of Technology and Metallurgy",
+    "Veterinarska Medicina": "Faculty of Veterinary Medicine",
+    "Fakultet muzičke umetnosti": "Faculty of Music Arts",
+    "Fakultet likovnih umetnosti": "Faculty of Fine Arts",
+    "Fakultet primenjenih umetnosti": "Faculty of Applied Arts",
+    "Akademija struk. stud. Politehnika": "Polytechnic Academy of Vocational Studies",
+    "Visoka ICT skola": "Higher ICT School",
+    "BAPUSS - Umetnicki": "BAPUSS - Artistic",
+    "BAPUSS - Poslovni": "BAPUSS - Business",
+    "Visoka zdravstvena škola": "Higher School of Health",
+    "VIŠER": "VIŠER",
+    "Univerzitet Metropolitan": "Metropolitan University"
+  },
+  "DONATIONS.NEEDED": "Needed"
 }

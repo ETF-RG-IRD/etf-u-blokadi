@@ -28,7 +28,7 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     L.latLng(44.90, 20.60)
   );
 
-  // Sample locations for demonstration; keys should match the school names from the donation data.
+  // Sample locations for demonstration; keys should match the keys used in your translation files.
   private readonly LOCATIONS = new Map<string, [number, number]>([
     ["Arhitektonski Fakultet", [20.476271197910265, 44.805254076225896]],
     //["Gradjevinski Fakultet", [20.4770000000000, 44.805254076225896]],
@@ -67,7 +67,7 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],
-    className: 'marker-icon-transition' // Add this line
+    className: 'marker-icon-transition'
   });
   
   private etfIcon = L.icon({
@@ -75,12 +75,13 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32],
-    className: 'marker-icon-transition' // Add this line
+    className: 'marker-icon-transition'
   });
   
   constructor(
     private ngZone: NgZone,
-    private donationDataService: DonationDataService
+    private donationDataService: DonationDataService,
+    private translate: TranslateService  // <-- Inject TranslateService
   ) {}
 
   ngAfterViewInit(): void {
@@ -137,16 +138,25 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     window.removeEventListener('resize', this.debouncedResize);
   }
 
-  // Update addMarkers() to include donation info from the API.
+  // Update addMarkers() to include donation info from the API and use translations.
   private addMarkers(donations: { [school: string]: string[] } = {}): void {
     Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
+      // Use TranslateService to retrieve the translated school name.
+      // The key is assumed to be defined as "FACULTIES.<school name>" in your JSON files.
+      const schoolTranslationKey = `FACULTIES.${name}`;
+      const schoolNameTranslated = this.translate.instant(schoolTranslationKey) || name;
+
       // Choose icon based on the location name.
       const iconToUse = name === 'ETF' ? this.etfIcon : this.customIcon;
       
-      // Build the popup content.
-      let popupContent = `<strong>${name}</strong>`;
+      // Retrieve the translation for the "Needed:" text.
+      // Ensure that the key "DONATIONS.NEEDED" is defined in your translation files.
+      const neededText = this.translate.instant('DONATIONS.NEEDED') || 'Potrebno';
+
+      // Build the popup content using the translated texts.
+      let popupContent = `<strong>${schoolNameTranslated}</strong>`;
       if (donations[name] && donations[name].length) {
-        popupContent += `<br/><em>Potrebno:</em><ul>`;
+        popupContent += `<br/><em>${neededText}:</em><ul>`;
         donations[name].forEach(item => {
           popupContent += `<li>${item}</li>`;
         });
@@ -157,22 +167,22 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
         .addTo(this.map)
         .bindPopup(popupContent, { autoClose: false, closeOnClick: false });
       
-// Inside addMarkers() method, replace existing event handlers:
-marker.on('mouseover', () => {
-  if (name !== 'ETF') {
-    marker.setIcon(this.etfIcon);
-  }
-  marker.getPopup()?.getElement()?.classList.add('fade-in');
-  marker.openPopup();
-});
+      // Event handlers for marker hover effects.
+      marker.on('mouseover', () => {
+        if (name !== 'ETF') {
+          marker.setIcon(this.etfIcon);
+        }
+        marker.getPopup()?.getElement()?.classList.add('fade-in');
+        marker.openPopup();
+      });
 
-marker.on('mouseout', () => {
-  if (name !== 'ETF') {
-    marker.setIcon(this.customIcon);
-  }
-  marker.getPopup()?.getElement()?.classList.remove('fade-in');
-  setTimeout(() => marker.closePopup(), 100);
-});
+      marker.on('mouseout', () => {
+        if (name !== 'ETF') {
+          marker.setIcon(this.customIcon);
+        }
+        marker.getPopup()?.getElement()?.classList.remove('fade-in');
+        setTimeout(() => marker.closePopup(), 100);
+      });
     });
   }
 }

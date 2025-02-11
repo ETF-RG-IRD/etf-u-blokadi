@@ -9,7 +9,8 @@ export interface DonationData {
 
 @Injectable({ providedIn: 'root' })
 export class DonationDataService {
-  private apiUrl = 'http://localhost:3000/api/donations'; // update this URL as needed
+  private apiUrl = '/api/donations';
+
 
   constructor(private http: HttpClient) {}
 

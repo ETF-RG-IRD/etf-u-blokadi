@@ -1,0 +1,3 @@
+[build]
+  functions = "netlify/functions"
+  publish = "dist/etf-u-blokadi"  # adjust to your Angular build output directory

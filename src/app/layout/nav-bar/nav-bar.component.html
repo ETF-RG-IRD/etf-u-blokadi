@@ -85,13 +85,13 @@
 
 
         <!-- Right side: Language Dropdown -->
-        <div
+        <div 
         class="relative flex items-center mx-2 md:order-2 gap-1 md:gap-0 rounded-lg border border-transparent hover:bg-gray-700 transition-colors duration-200">
-            <button (click)="toggleLangDropdown()" type="button" data-dropdown-toggle="language-dropdown-menu"
+            <button (click)="toggleLangDropdown()" type="button" data-dropdown-toggle="language-dropdown-menu" 
             class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white rounded-lg cursor-pointer inset-shadow-sm transition-colors duration-200">
                 {{ siteLanguage }} ▼
             </button>
-            <div *ngIf="langDropdownOpen"
+            <div *ngIf="langDropdownOpen" @listAnimation
             class="absolute items-center fit-container top-6 w-33 z-50 my-4 text-base list-none bg-white/5 divide-white rounded-lg shadow-md user-select-none cursor-pointer transition-colors duration-200"
                 id="language-dropdown-menu">
                 <ul class="px-2 my-auto font-medium fit-container">

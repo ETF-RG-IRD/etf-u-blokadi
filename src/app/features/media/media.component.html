@@ -1,44 +1,48 @@
-<div class="media-container">
+<div class="media-container relative">
   <!-- Loader overlay (displayed while media is loading) -->
   <app-loading *ngIf="mediaLoading"></app-loading>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <!-- Image Slider -->
-        <div class="image-slider">
-          <!-- Current image (visible) -->
-          <img
-            [src]="images[currentImageIndex]"
-            class="img-fluid current-image"
-            alt="Slideshow Image"
-            image-rendering="pixelated">
-          <!-- Next image (used during transition) -->
-          <img
-            class="img-fluid next-image"
-            alt="Slideshow Image"
-            image-rendering="pixelated">
-          <!-- Left arrow clickable area -->
-          <div class="arrow arrow-left" (click)="previousImage($event)">
-            &#10094;
-          </div>
-          <!-- Right arrow clickable area -->
-          <div class="arrow arrow-right" (click)="nextImage($event)">
-            &#10095;
-          </div>
-        </div>
+  <!-- Slideshow Container (full width on mobile) -->
+  <div class="w-full">
+    <div class="image-slider relative w-full md:h-[650px] h-[550px] overflow-hidden cursor-default">
+      <!-- Current image (visible) -->
+      <img
+        [src]="images[currentImageIndex]"
+        class="current-image absolute top-0 left-0 w-full h-full object-cover z-20"
+        alt="Slideshow Image"
+        style="image-rendering: pixelated;">
+      <!-- Next image (used during transition) -->
+      <img
+        class="next-image absolute top-0 left-0 w-full h-full object-cover z-10"
+        alt="Slideshow Image"
+        style="image-rendering: pixelated;">
+      <!-- Left arrow clickable area -->
+      <div
+        (click)="previousImage($event)"
+        class="arrow arrow-left absolute top-1/2 left-2 transform -translate-y-1/2 text-2xl text-white/70 hover:text-white cursor-pointer select-none z-30">
+        &#10094;
+      </div>
+      <!-- Right arrow clickable area -->
+      <div
+        (click)="nextImage($event)"
+        class="arrow arrow-right absolute top-1/2 right-2 transform -translate-y-1/2 text-2xl text-white/70 hover:text-white cursor-pointer select-none z-30">
+        &#10095;
+      </div>
+    </div>
+  </div>
 
-        <!-- Instagram Profiles -->
-        <div class="space-mono-regular bg-transparent text-white p-4">
-          <div class="d-flex flex-wrap justify-content-center gap-4">
-            <div *ngFor="let profile of instagramProfiles" class="embed-container">
-              <blockquote
-                class="instagram-media"
-                [attr.data-instgrm-permalink]="'https://www.instagram.com/' + profile.username + '/'"
-                data-instgrm-version="14">
-              </blockquote>
-            </div>
-          </div>
+  <!-- Instagram Profiles -->
+  <div class="container mx-auto px-4 mt-8">
+    <div class="bg-transparent text-white p-4 font-mono">
+      <div class="flex flex-wrap justify-center gap-4">
+        <div
+          *ngFor="let profile of instagramProfiles"
+          class="embed-container relative overflow-hidden h-[350px] rounded-br-[100px] transition-all duration-300 ease-in-out hover:rounded-tl-[10px] hover:rounded-none">
+          <blockquote
+            class="instagram-media"
+            [attr.data-instgrm-permalink]="'https://www.instagram.com/' + profile.username + '/'"
+            data-instgrm-version="14">
+          </blockquote>
         </div>
       </div>
     </div>

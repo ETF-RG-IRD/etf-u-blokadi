@@ -9,10 +9,13 @@ export interface DonationData {
 
 @Injectable({ providedIn: 'root' })
 export class DonationDataService {
-  // Choose the API URL based on the hostname.
-  private apiUrl = window.location.hostname.includes('netlify.app')
-    ? '/.netlify/functions/donations'
-    : '/api/donations';
+  // Determine the API URL based on the hostname.
+  private apiUrl =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:3000/api/donations'
+      : window.location.hostname.includes('netlify.app')
+        ? '/.netlify/functions/donations'
+        : '/api/donations';
 
   constructor(private http: HttpClient) {}
 

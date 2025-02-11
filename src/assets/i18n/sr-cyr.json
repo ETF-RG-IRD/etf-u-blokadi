@@ -8,7 +8,8 @@
     "DONATIONS_TITLE" : "Донације",
     "DONATIONS": {
         "BUTTON_TOOLTIP": "Посети blokadnedonacije.rs",
-        "BUTTON_TEXT": "Донирај"
+        "BUTTON_TEXT": "Донирај",
+        "NEEDED": "Потребно"
       },
     "typewriter": {
         "text1": "Захтеви нису испуњени",

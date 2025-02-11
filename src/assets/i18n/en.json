@@ -8,7 +8,8 @@
     "DONATIONS_TITLE" : "Donations",
     "DONATIONS": {
         "BUTTON_TOOLTIP": "Visit blokadnedonacije.rs",
-        "BUTTON_TEXT": "Donate"
+        "BUTTON_TEXT": "Donate",
+        "NEEDED": "Needed"
       },
     "typewriter": {
         "text1": "Demands are not fulfilled",
@@ -95,6 +96,5 @@
     "Visoka zdravstvena škola": "Higher School of Health",
     "VIŠER": "VIŠER",
     "Univerzitet Metropolitan": "Metropolitan University"
-  },
-  "DONATIONS.NEEDED": "Needed"
+  }
 }

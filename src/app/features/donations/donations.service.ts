@@ -9,7 +9,8 @@ export interface DonationData {
 
 @Injectable({ providedIn: 'root' })
 export class DonationDataService {
-  private apiUrl = '/api/donations';
+
+  private apiUrl = '/.netlify/functions/donations';
 
 
   constructor(private http: HttpClient) {}

@@ -66,14 +66,16 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     iconUrl: './map-pin.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
-    popupAnchor: [0, -32]
+    popupAnchor: [0, -32],
+    className: 'marker-icon-transition' // Add this line
   });
-
+  
   private etfIcon = L.icon({
     iconUrl: './map-pin-red.png',
     iconSize: [32, 32],
     iconAnchor: [16, 32],
-    popupAnchor: [0, -32]
+    popupAnchor: [0, -32],
+    className: 'marker-icon-transition' // Add this line
   });
   
   constructor(
@@ -154,15 +156,22 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
         .addTo(this.map)
         .bindPopup(popupContent, { autoClose: false, closeOnClick: false });
       
-      marker.on('mouseover', () => {
-        marker.getPopup()?.getElement()?.classList.add('fade-in');
-        marker.openPopup();
-      });
-      
-      marker.on('mouseout', () => {
-        marker.getPopup()?.getElement()?.classList.remove('fade-in');
-        setTimeout(() => marker.closePopup(), 100);
-      });
+// Inside addMarkers() method, replace existing event handlers:
+marker.on('mouseover', () => {
+  if (name !== 'ETF') {
+    marker.setIcon(this.etfIcon);
+  }
+  marker.getPopup()?.getElement()?.classList.add('fade-in');
+  marker.openPopup();
+});
+
+marker.on('mouseout', () => {
+  if (name !== 'ETF') {
+    marker.setIcon(this.customIcon);
+  }
+  marker.getPopup()?.getElement()?.classList.remove('fade-in');
+  setTimeout(() => marker.closePopup(), 100);
+});
     });
   }
 }

@@ -107,7 +107,8 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
       zoom: 11,
       preferCanvas: true,
       maxBounds: this.BELGRADE_BOUNDS,
-      maxBoundsViscosity: 1.0
+      maxBoundsViscosity: 1.0,
+      attributionControl: false
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

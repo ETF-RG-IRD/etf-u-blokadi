@@ -5,7 +5,10 @@
     "MEDIJI": "Медији",
     "FAQ": "Често постављена питања",
     "KONTAKT": "Контакт",
-    "DONATIONS": "Донације",
+    "DONATIONS": {
+        "BUTTON_TOOLTIP": "Посети blokadnedonacije.rs",
+        "BUTTON_TEXT": "Донирај"
+      },
     "typewriter": {
         "text1": "Захтеви нису испуњени",
         "text2": "Технички факултети у блокади"
@@ -60,5 +63,38 @@
         "question10": "Како могу да се укључим у радне групе?",
         "answer10": "Можеш да се укључиш у радне групе тако што ћеш посетити неки од пленума и изразити своју жељу да се укључиш у радну групу која те занима."
     },
-    "COMMON_QUESTIONS": "Честа питања"
-}
+    "COMMON_QUESTIONS": "Честа питања",
+    "FACULTIES": {
+      "Arhitektonski Fakultet": "Архитектонски факултет",
+      "Fakultet bezbednosti": "Факултет безбедности",
+      "Ekonomski Fakultet": "Економски факултет",
+      "ETF": "Електротехнички факултет",
+      "Farmaceutski Fakultet": "Фармацевтски факултет",
+      "Filološki, Biološki i Geografski fakultet": "Филолошки, Биолошки и Географски факултет",
+      "Filozofski Fakultet": "Филозофски факултет",
+      "Fizički Fakultet": "Физички факултет",
+      "Hemijski Fakultet": "Хемијски факултет",
+      "MATF": "Математички факултет",
+      "Mašinski Fakultet": "Машински факултет",
+      "Fakultet Politčkih Nauka": "Факултет политичких наука",
+      "Poljoprivredni Fakultet": "Пољопривредни факултет",
+      "Pravni Fakultet": "Правни факултет",
+      "Rektorat UB": "Ректорат Универзитета у Београду",
+      "FASPER": "Факултет спорта и физичког васпитања",
+      "Stomatološki Fakultet": "Стоматолошки факултет",
+      "TMF": "Технолошко-металуршки факултет",
+      "Veterinarska Medicina": "Ветеринарска медицина",
+      "Fakultet muzičke umetnosti": "Факултет музичке уметности",
+      "Fakultet likovnih umetnosti": "Факултет ликовних уметности",
+      "Fakultet primenjenih umetnosti": "Факултет примењених уметности",
+      "Akademija struk. stud. Politehnika": "Академија струковних студија Политехника",
+      "Visoka ICT skola": "Висока ИКТ школа",
+      "BAPUSS - Umetnicki": "БАПУСС - Уметнички",
+      "BAPUSS - Poslovni": "БАПУСС - Пословни",
+      "Visoka zdravstvena škola": "Висока здравствена школа",
+      "VIŠER": "ВИШЕР",
+      "Univerzitet Metropolitan": "Универзитет Метрополитан"
+    },
+    "DONATIONS.NEEDED": "Потребно"
+  }
+  

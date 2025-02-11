@@ -23,7 +23,7 @@
 
   /* Tooltip pseudo-element */
   .custom-button::after {
-    content: "Poseti blokadnedonacije.rs";
+    content: attr(data-tooltip);
     position: absolute;
     bottom: 110%; /* positions the tooltip above the button */
     left: 50%;

@@ -39,8 +39,8 @@
         "MAŠINSKI": "Машински факултет"
     },
     "STATUS": {
-        "FULFILLED": "Ispunjen",
-        "NOT_FULFILLED": "Nije ispunjen"
+        "FULFILLED": "ISPUNJEN",
+        "NOT_FULFILLED": "NIJE ISPUNJEN"
     },
     "PROGRESS": "Trenutno u izradi",
     "faq": {

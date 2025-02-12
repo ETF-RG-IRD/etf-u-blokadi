@@ -139,50 +139,110 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
   }
 
   // Update addMarkers() to include donation info from the API and use translations.
-  private addMarkers(donations: { [school: string]: string[] } = {}): void {
-    Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
-      // Use TranslateService to retrieve the translated school name.
-      // The key is assumed to be defined as "FACULTIES.<school name>" in your JSON files.
-      const schoolTranslationKey = `FACULTIES.${name}`;
-      const schoolNameTranslated = this.translate.instant(schoolTranslationKey) || name;
+ // donations.component.ts (only the addMarkers() method shown)
+private addMarkers(donations: { [school: string]: { name: string, types: string[] }[] } = {}): void {
+  Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
+    // Use TranslateService to retrieve the translated school name.
+    const schoolTranslationKey = `FACULTIES.${name}`;
+    const schoolNameTranslated = this.translate.instant(schoolTranslationKey) || name;
 
-      // Choose icon based on the location name.
-      const iconToUse = name === 'ETF' ? this.etfIcon : this.customIcon;
-      
-      // Retrieve the translation for the "Needed:" text.
-      // Ensure that the key "DONATIONS.NEEDED" is defined in your translation files.
-      const neededText = this.translate.instant('DONATIONS.NEEDED') || 'Potrebno';
+    // Choose icon based on the location name.
+    const iconToUse = name === 'ETF' ? this.etfIcon : this.customIcon;
+    
+    // Retrieve translated headers (ensure these keys are in your translation files)
+    const neededHeader = this.translate.instant('DONATIONS.NEEDED') || 'Potrebno';
+    const urgentHeader = this.translate.instant('DONATIONS.URGENT') || 'Hitno';
+    const excessHeader = this.translate.instant('DONATIONS.EXCESS') || 'Višak';
 
-      // Build the popup content using the translated texts.
-      let popupContent = `<strong>${schoolNameTranslated}</strong>`;
-      if (donations[name] && donations[name].length) {
-        popupContent += `<br/><em>${neededText}:</em><ul>`;
-        donations[name].forEach(item => {
-          popupContent += `<li>${item}</li>`;
-        });
-        popupContent += `</ul>`;
+    // Prepare groups
+    let groupManjak: string[] = [];
+    let groupHitno: string[] = [];
+    let groupVisak: string[] = [];
+
+    if (donations[name] && donations[name].length) {
+      donations[name].forEach(item => {
+        if (item.types.includes('hitno')) {
+          groupManjak.push(item.name);
+        }
+        else if (item.types.includes('manjak')) {
+          groupHitno.push(item.name);
+        }
+        if (item.types.includes('višak')) {
+          groupVisak.push(item.name);
+        }
+      });
+    }
+
+    // Build the popup HTML content.
+    let popupContent = `<strong>${schoolNameTranslated}</strong>`;
+    // Only show the section if there are items in the group.
+    
+    if (groupHitno.length) {
+      popupContent += `<br/><em class="group-header hitno-header">${urgentHeader}:</em><ul class="popup-list">`;
+      groupHitno.forEach(item => {
+        popupContent += `<li class="hitno">${item}</li>`;
+      });
+      popupContent += `</ul>`;
+    }
+    if (groupManjak.length) {
+      popupContent += `<br/><em class="group-header manjak-header">${neededHeader}:</em><ul class="popup-list">`;
+      groupManjak.forEach(item => {
+        popupContent += `<li class="manjak">${item}</li>`;
+      });
+      popupContent += `</ul>`;
+    }
+    if (groupVisak.length) {
+      popupContent += `<br/><em class="group-header visak-header">${excessHeader}:</em><ul class="popup-list">`;
+      groupVisak.forEach(item => {
+        popupContent += `<li class="visak">${item}</li>`;
+      });
+      popupContent += `</ul>`;
+    }
+
+    const marker = L.marker([coordinates[1], coordinates[0]], { icon: iconToUse })
+      .addTo(this.map)
+      .bindPopup(popupContent, { autoClose: false, closeOnClick: false });
+
+    // Variable to hold a potential close timeout for the popup.
+    let popupCloseTimeout: any;
+
+    // Helper: When the marker is hovered over, open the popup and attach hover listeners to it.
+    marker.on('mouseover', () => {
+      if (name !== 'ETF') {
+        marker.setIcon(this.etfIcon);
       }
+      marker.openPopup();
 
-      const marker = L.marker([coordinates[1], coordinates[0]], { icon: iconToUse })
-        .addTo(this.map)
-        .bindPopup(popupContent, { autoClose: false, closeOnClick: false });
-      
-      // Event handlers for marker hover effects.
-      marker.on('mouseover', () => {
-        if (name !== 'ETF') {
-          marker.setIcon(this.etfIcon);
+      // Get the popup element (might need a small delay to be present in the DOM)
+      setTimeout(() => {
+        const popupEl = marker.getPopup()?.getElement();
+        if (popupEl) {
+          popupEl.classList.add('fade-in');
+          // When hovering over the popup, cancel any pending close.
+          popupEl.addEventListener('mouseenter', () => {
+            clearTimeout(popupCloseTimeout);
+          });
+          // When leaving the popup, schedule it to close.
+          popupEl.addEventListener('mouseleave', () => {
+            popupCloseTimeout = setTimeout(() => marker.closePopup(), 100);
+          });
         }
-        marker.getPopup()?.getElement()?.classList.add('fade-in');
-        marker.openPopup();
-      });
-
-      marker.on('mouseout', () => {
-        if (name !== 'ETF') {
-          marker.setIcon(this.customIcon);
-        }
-        marker.getPopup()?.getElement()?.classList.remove('fade-in');
-        setTimeout(() => marker.closePopup(), 100);
-      });
+      }, 0);
     });
-  }
+
+    // When the mouse leaves the marker, schedule closing the popup.
+    marker.on('mouseout', () => {
+      if (name !== 'ETF') {
+        marker.setIcon(this.customIcon);
+      }
+      // Remove the fade-in class immediately (optional) and close the popup after a short delay.
+      const popupEl = marker.getPopup()?.getElement();
+      if (popupEl) {
+        popupEl.classList.remove('fade-in');
+      }
+      popupCloseTimeout = setTimeout(() => marker.closePopup(), 100);
+    });
+  });
+}
+
 }

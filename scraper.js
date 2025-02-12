@@ -10,7 +10,6 @@ async function scrapeDonations() {
 
     const donationsData = {};
 
-    // Select each donation card. Here we assume every card has both the "card" and "m-3" classes.
     $('.card.m-3').each((i, card) => {
       // Extract the school name from the card title.
       const schoolName = $(card).find('.card-title').first().text().trim();
@@ -20,10 +19,23 @@ async function scrapeDonations() {
       $(card)
         .find('ul.list-group li')
         .each((j, li) => {
-          // Get the item name from the first <span> in the list item.
+          // The first span is the item name.
           const itemName = $(li).find('span').first().text().trim();
-          // (Optional) You can also extract additional details (e.g., badges for “Manjak” or “Hitno”)
-          items.push(itemName);
+
+          // Look for all badges to determine the donation types.
+          const types = [];
+          $(li)
+            .find('.badge')
+            .each((k, badge) => {
+              const typeText = $(badge).text().trim().toLowerCase();
+              // Normalize the text if needed (e.g., remove extra spaces).
+              if (['manjak', 'hitno', 'višak'].includes(typeText)) {
+                types.push(typeText);
+              }
+            });
+
+          // Push an object with both the name and the types.
+          items.push({ name: itemName, types });
         });
 
       if (schoolName) {
@@ -38,7 +50,6 @@ async function scrapeDonations() {
   }
 }
 
-// Allow running this script directly.
 if (require.main === module) {
   scrapeDonations().then((data) => {
     console.log(JSON.stringify(data, null, 2));

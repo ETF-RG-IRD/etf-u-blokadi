@@ -9,7 +9,9 @@
     "DONATIONS": {
         "BUTTON_TOOLTIP": "Poseti blokadnedonacije.rs",
         "BUTTON_TEXT": "Doniraj",
-        "NEEDED": "Potrebno"
+        "NEEDED": "Potrebno",
+        "URGENT": "Hitno",
+        "EXCESS": "Višak"
       },
     "typewriter": {
         "text1": "Zahtevi nisu ispunjeni",

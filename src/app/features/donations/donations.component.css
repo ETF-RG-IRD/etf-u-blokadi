@@ -48,3 +48,21 @@
     transform: scale(1.1);
     transition: background-color 0.2s ease, transform 0.2s ease;
   }
+
+  :host ::ng-deep .popup-list li {
+    cursor : default;
+    user-select: none;
+  }
+  
+  :host ::ng-deep .popup-list li.hitno:hover {
+    color: crimson;
+  }
+  
+  :host ::ng-deep .popup-list li.manjak:hover {
+    color: mediumblue;
+  }
+  
+  :host ::ng-deep .popup-list li.visak:hover {
+    color: skyblue;
+  }
+  

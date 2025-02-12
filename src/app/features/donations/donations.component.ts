@@ -180,21 +180,21 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
     if (groupHitno.length) {
       popupContent += `<br/><em class="group-header hitno-header">${urgentHeader}:</em><ul class="popup-list">`;
       groupHitno.forEach(item => {
-        popupContent += `<li class="hitno">${item}</li>`;
+        popupContent += `<li class="hitno" data-tooltip=${urgentHeader}>${item}</li>`;
       });
       popupContent += `</ul>`;
     }
     if (groupManjak.length) {
       popupContent += `<br/><em class="group-header manjak-header">${neededHeader}:</em><ul class="popup-list">`;
       groupManjak.forEach(item => {
-        popupContent += `<li class="manjak">${item}</li>`;
+        popupContent += `<li class="manjak" data-tooltip=${neededHeader}>${item}</li>`;
       });
       popupContent += `</ul>`;
     }
     if (groupVisak.length) {
       popupContent += `<br/><em class="group-header visak-header">${excessHeader}:</em><ul class="popup-list">`;
       groupVisak.forEach(item => {
-        popupContent += `<li class="visak">${item}</li>`;
+        popupContent += `<li class="visak" data-tooltip=${excessHeader}>${item}</li>`;
       });
       popupContent += `</ul>`;
     }

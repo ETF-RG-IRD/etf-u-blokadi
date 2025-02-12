@@ -59,7 +59,15 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     ["BAPUSS - Poslovni", [20.481041268854053, 44.804199656582895]],
     ["Visoka zdravstvena škola", [20.380804982159084, 44.85844162429406]],
     ["VIŠER", [20.47995649612723, 44.76832552221673]],
-    ["Univerzitet Metropolitan", [20.455155840507967, 44.83055028434515]]
+    ["Univerzitet Metropolitan", [20.455155840507967, 44.83055028434515]],
+    ["Visoka hotelijerska skola", [20.425975809526122, 44.77067591824139]],
+    ["Fakultet sporta i fizičkog DIF", [20.428212813492024, 44.763459800836266]],
+    ["Medicinski Fakultet (zgrada instituta za anatomiju)", [20.462900915343962, 44.7979955233965]],
+    ["Bogoslovski Fakultet",[20.49217882624943, 44.81620908585055]],
+    ["Šumarski Fakultet",[20.422407928628243, 44.782887071070974]],
+    ["Rudarsko Geološki Fakultet",[20.47464913429474, 44.81330187228683]],
+    ["Saobraćajni Fakultet",[20.48322985572051, 44.76586473522006]]
+
   ]);
 
   private customIcon = L.icon({
@@ -162,10 +170,10 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
     if (donations[name] && donations[name].length) {
       donations[name].forEach(item => {
         if (item.types.includes('hitno')) {
-          groupManjak.push(item.name);
+          groupHitno.push(item.name);
         }
         else if (item.types.includes('manjak')) {
-          groupHitno.push(item.name);
+          groupManjak.push(item.name);
         }
         if (item.types.includes('višak')) {
           groupVisak.push(item.name);
@@ -174,27 +182,27 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
     }
 
     // Build the popup HTML content.
-    let popupContent = `<strong>${schoolNameTranslated}</strong>`;
+    let popupContent = `<strong class="group-title">${schoolNameTranslated}</strong>`;
     // Only show the section if there are items in the group.
     
     if (groupHitno.length) {
       popupContent += `<br/><em class="group-header hitno-header">${urgentHeader}:</em><ul class="popup-list">`;
       groupHitno.forEach(item => {
-        popupContent += `<li class="hitno" data-tooltip=${urgentHeader}>${item}</li>`;
+        popupContent += `<li class="hitno">${item}</li>`;
       });
       popupContent += `</ul>`;
     }
     if (groupManjak.length) {
       popupContent += `<br/><em class="group-header manjak-header">${neededHeader}:</em><ul class="popup-list">`;
       groupManjak.forEach(item => {
-        popupContent += `<li class="manjak" data-tooltip=${neededHeader}>${item}</li>`;
+        popupContent += `<li class="manjak">${item}</li>`;
       });
       popupContent += `</ul>`;
     }
     if (groupVisak.length) {
       popupContent += `<br/><em class="group-header visak-header">${excessHeader}:</em><ul class="popup-list">`;
       groupVisak.forEach(item => {
-        popupContent += `<li class="visak" data-tooltip=${excessHeader}>${item}</li>`;
+        popupContent += `<li class="visak">${item}</li>`;
       });
       popupContent += `</ul>`;
     }

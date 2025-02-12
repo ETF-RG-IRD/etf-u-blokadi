@@ -65,4 +65,12 @@
   :host ::ng-deep .popup-list li.visak:hover {
     color: skyblue;
   }
-  
+  :host ::ng-deep .group-header{
+    user-select : none;
+    cursor : default;
+  }
+
+  :host ::ng-deep .group-title{
+    user-select : none;
+    cursor : default;
+  }

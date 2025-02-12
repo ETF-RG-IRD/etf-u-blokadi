@@ -19,7 +19,10 @@ export class FaqComponent {
     { question: 'faq.question7', answer: 'faq.answer7', isOpen: false },
     { question: 'faq.question8', answer: 'faq.answer8', isOpen: false },
     { question: 'faq.question9', answer: 'faq.answer9', isOpen: false },
-    { question: 'faq.question10', answer: 'faq.answer10', isOpen: false }
+    { question: 'faq.question10', answer: 'faq.answer10', isOpen: false },
+    { question: 'faq.question11', answer: 'faq.answer11', isOpen: false },
+    { question: 'faq.question12', answer: 'faq.answer12', isOpen: false }
+
   ];
 
   constructor(private translate: TranslateService) {
@@ -33,7 +36,13 @@ export class FaqComponent {
       'faq.question7', 'faq.answer7',
       'faq.question8', 'faq.answer8',
       'faq.question9', 'faq.answer9',
-      'faq.question10', 'faq.answer10'
+      'faq.question10', 'faq.answer10',
+      'faq.question11', 'faq.answer11',
+      'faq.question12', 'faq.answer12',
+      'faq.question13', 'faq.answer13',
+      'faq.question14', 'faq.answer14',
+      'faq.question15', 'faq.answer15',
+      'faq.question16', 'faq.answer16'
     ]).subscribe(translations => {
       this.faqItems.forEach((item, index) => {
         item.question = translations[`faq.question${index + 1}`];

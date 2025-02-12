@@ -43,32 +43,47 @@
         "NOT_FULFILLED": "Not fulfilled"
     },
     "PROGRESS": "Currently in progress",
-    "faq": {
-        "question1": "What is a plenum?",
-        "answer1": "Student plenums are directly democratic and militant structures. As open forums, every student has the right to discuss and vote on the strategy and tactics of student social struggles. Plenum decisions are public, subject to critique and modification by participants, making them more resistant to secret maneuvers and behind-the-scenes manipulations.",
-        "question2": "Rebuttal",
-        "answer2": "A rebuttal is the right to speak following a speaker's presentation, referring to their statement.",
-        "question3": "Question",
-        "answer3": "A question is the right to speak following a speaker's presentation, referring to their statement.",
-        "question4": "New speech",
-        "answer4": "New speech is the right to speak following a speaker's presentation, referring to their statement.",
-        "question5": "Technical rebuttal",
-        "answer5": "A short answer in the form of factual information or an explanation without adding personal opinion.",
-        "question6": "How can I help?",
-        "answer6": "Through donations (link) and attending protests.",
-        "question7": "Who can participate in the plenum?",
-        "answer7": "All students.",
-        "question8": "How are donations used?",
-        "answer8": "Donations are used to cover protest costs, print leaflets, organize performances, and other events.",
-        "question9": "What are action groups?",
-        "answer9": "Action groups consist of students focused on specific topics and tasks. They are open to all interested students.",
-        "question10": "How can I join a action group?",
-        "answer10": "You can join a action group by attending a plenum and expressing your interest in a specific group."
+"faq": {
+      "question1": "What is a plenum?",
+      "answer1": "A plenum is an open forum at a faculty or university where students gather directly to discuss the strategies and tactics of protest actions. During a plenum, decisions about organizing protests are made through collective voting, ensuring transparency and the possibility for public critique.",
+      
+      "question2": "How can I help?",
+      "answer2": "You can help in several ways: by making financial donations used to cover the costs of organizing protests (such as printing flyers, renting spaces, and securing protective equipment), by sharing information via social networks, and by attending protests in person. This helps spread the message and gather public support.",
+      
+      "question3": "Who can participate in the plenum?",
+      "answer3": "All students can participate in the plenum, regardless of faculty or major. It is important that every voice is heard, and critical opinions are welcome, which contributes to a democratic and open discussion about future actions.",
+      
+      "question4": "How are donations used?",
+      "answer4": "Donations are used transparently to finance protest costs such as logistics, the production of promotional materials, organizing performances, and supporting victims of violence. Funds are publicly reported at the plenum so that all participants can see how the money is spent.",
+      
+      "question5": "What are working groups?",
+      "answer5": "Working groups are specialized teams of students that focus on specific aspects of the protest movement – such as logistics, communication, legal support, PR, and security. They enable more efficient task distribution and coordination of actions, with activities continuously coordinated through plenums.",
+      
+      "question6": "How can I join a working group?",
+      "answer6": "You can join by attending one of the plenums or by contacting the organizers via social networks. This way, you can express your interest and receive instructions on how to join a particular working group – whether you are interested in protest organization, PR, or legal support.",
+      
+      "question7": "What are the main demands of the students?",
+      "answer7": "The students demand a thorough and independent investigation of the accident in Novi Sad, the public release of complete documentation on the reconstruction of the canopy, accountability for those responsible, an increase in the budget for higher education, and a reform in the way authorities operate to prevent a similar tragedy in the future.",
+      
+      "question8": "How are protests organized?",
+      "answer8": "Protests are organized in a decentralized manner – students gather at plenums where decisions are made collectively. Working groups then take on specific tasks (logistics, communication, legal support) to ensure that actions such as blocking key roads and organizing marches are carried out efficiently. This model has allowed the protest movement to quickly expand and gain broad support.",
+      
+      "question9": "Are the protests democratic and safe?",
+      "answer9": "Although the protests take place under challenging conditions, the organizers strive to conduct them according to democratic principles. Decisions are made collectively, and special security working groups work to protect participants. Despite pressures, both students and citizens continue to gather to express their dissatisfaction and demands for change.",
+      
+      "question10": "How is freedom of speech and the right to protest protected?",
+      "answer10": "Freedom of speech and the right to protest are fundamental rights that students actively defend. Open debate is encouraged at the plenums, and legal teams provide support in case of reprisals. With the support of citizens, students demand that the authorities respect constitutional and international standards, while the media and independent organizations work to shed light on events.",
+      
+      "question11": "Where can I find the latest information about the protests?",
+      "answer11": "You can follow the latest information through the official websites of protest movements, the organizers’ social networks, student portals, and independent media outlets covering events in Serbia. It is also recommended to follow announcements from the plenums and working groups to stay updated on all news.",
+      
+      "question12": "What to expect in the coming days?",
+      "answer12": "Organizers are announcing the continuation of protests, including massive blockades of key roads, additional tribal marches, and public gatherings. Students urge citizens to join as the movement aims to bring about long-term reforms and completely eradicate corruption. The protest movement will continue until the demands are met and the authorities show a willingness to implement real changes."
     },
     "COMMON_QUESTIONS": "Frequently Asked Questions",
     "FACULTIES": {
     "Arhitektonski Fakultet": "Faculty of Architecture",
-    "Fakultet bezbednosti": "Faculty of Security",
+    "Fakultet bezbdednosti": "Faculty of Security",
     "Ekonomski Fakultet": "Faculty of Economics",
     "ETF": "Faculty of Electrical Engineering",
     "Farmaceutski Fakultet": "Faculty of Pharmacy",

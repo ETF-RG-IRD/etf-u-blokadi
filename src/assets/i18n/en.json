@@ -39,8 +39,8 @@
         "MAŠINSKI": "Faculty of Mechanical Engineering"
     },
     "STATUS": {
-        "FULFILLED": "Fulfilled",
-        "NOT_FULFILLED": "Not fulfilled"
+        "FULFILLED": "FULFILLED",
+        "NOT_FULFILLED": "NOT FULFILLED"
     },
     "PROGRESS": "Currently in progress",
 "faq": {

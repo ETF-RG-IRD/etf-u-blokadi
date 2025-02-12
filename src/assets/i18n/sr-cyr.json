@@ -39,8 +39,8 @@
         "MAŠINSKI": "Машински факултет"
     },
     "STATUS": {
-        "FULFILLED": "Испуњен",
-        "NOT_FULFILLED": "Није испуњен"
+        "FULFILLED": "ИСПУЊЕН",
+        "NOT_FULFILLED": "НИЈЕ ИСПУЊЕН"
     },
     "PROGRESS": "Тренутно у изради",
     "faq": {
@@ -105,7 +105,7 @@
       "Fakultet likovnih umetnosti": "Факултет ликовних уметности",
       "Fakultet primenjenih umetnosti": "Факултет примењених уметности",
       "Akademija struk. stud. Politehnika": "Академија струковних студија Политехника",
-      "Visoka ICT skola": "Висока ИКТ школа",
+      "Visoka ICT skola": "Висока ИЦТ школа",
       "BAPUSS - Umetnicki": "БАПУСС - Уметнички",
       "BAPUSS - Poslovni": "БАПУСС - Пословни",
       "Visoka zdravstvena škola": "Висока здравствена школа",

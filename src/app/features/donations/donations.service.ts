@@ -3,8 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface DonationItem {
+  name: string;
+  types: string[];
+}
+
 export interface DonationData {
-  [school: string]: string[];
+  [school: string]: DonationItem[];
 }
 
 @Injectable({ providedIn: 'root' })

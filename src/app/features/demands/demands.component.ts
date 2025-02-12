@@ -19,8 +19,8 @@ export class DemandsComponent {
 
   accordionItems: AccordionItem[] = [
     {
-      title: 'zahtev1.naslov',  // Placeholder text for translation
-      content: 'zahtev1.sadrzaj', // Placeholder text for translation
+      title: 'zahtev1.naslov', 
+      content: 'zahtev1.sadrzaj', 
       isOpen: false,
       isFulfilled: false
     },

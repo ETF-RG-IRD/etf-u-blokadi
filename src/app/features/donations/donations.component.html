@@ -1,11 +1,29 @@
+<!-- Map Container -->
 <div
-  class="fixed left-1/2 top-1/2 w-full min-h-[400px] max-w-[99%] md:max-w-[80%] lg:max-w-[1100px] transform -translate-x-1/2 md:-translate-y-[35%] -translate-y-[25%] mt-8 md:mt-12 lg:mt-16 border-2 border-black rounded-lg overflow-hidden h-[50vh] md:h-[60vh]">
-  <div id="map" class="w-full h-full bg-gray-100 focus:outline-none"></div>
+  class="relative w-full min-h-[400px] max-w-[99%] md:max-w-[80%] lg:max-w-[1100px] mx-auto mt-8 md:mt-12 lg:mt-16 border-2 border-black rounded-lg overflow-hidden h-[50vh] md:h-[60vh]"
+>
+  <div id="map" class="w-full h-full bg-gray-100 focus:outline-none">
+    <!-- Button Container (Positioning for center alignment) -->
+    <a
+      class="custom-button absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white rounded-lg shadow-md transition-all duration-300"
+      href="http://blokadnedonacije.rs"
+      target="_blank"
+      [attr.data-tooltip]="'DONATIONS.BUTTON_TOOLTIP' | translate"
+    >
+      {{ "DONATIONS.BUTTON_TEXT" | translate }}
+    </a>
+  </div>
 </div>
 
-<a class="custom-button top-1/2 md:-translate-y-[55%] -translate-y-[-50%] md:-translate-x-[0%] -translate-x-[25%]"
-   href="http://blokadnedonacije.rs"
-   target="_blank"
-   [attr.data-tooltip]="'DONATIONS.BUTTON_TOOLTIP' | translate">
-   {{ "DONATIONS.BUTTON_TEXT" | translate }}
-</a>
+<!-- Urgent List Container -->
+<div class="relative z-10 m-2 p-2 mt-4 md:mt-6">
+  <h2 class="urgent-header text-2xl font-semibold text-red-500 mb-4">{{ "DONATIONS.URGENT" | translate }}</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let entry of urgentList" class="urgent-entry">
+      <h3 class="school-name text-sm font-medium text-white mb-2">{{ entry.school }}</h3>
+      <ul class="urgent-items list-disc pl-6 space-y-2">
+        <li *ngFor="let item of entry.items" class="urgent-item text-white">{{ item }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

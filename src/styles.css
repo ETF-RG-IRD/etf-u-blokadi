@@ -24,7 +24,8 @@
 }
 
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.urgent-header {
     color: #FF0000 !important;
     /* Red on hover/focus */
     font-weight: bold;
@@ -56,6 +57,7 @@
 
 body {
     font-family: 'IBM Plex Mono';
+    
     background-color: black;
     color: white;
 }

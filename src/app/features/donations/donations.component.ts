@@ -85,6 +85,8 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     popupAnchor: [0, -32],
     className: 'marker-icon-transition'
   });
+
+  public urgentList: { school: string; items: string[] }[] = [];
   
   constructor(
     private ngZone: NgZone,
@@ -149,6 +151,9 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
   // Update addMarkers() to include donation info from the API and use translations.
  // donations.component.ts (only the addMarkers() method shown)
 private addMarkers(donations: { [school: string]: { name: string, types: string[] }[] } = {}): void {
+
+  this.urgentList = []; 
+
   Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
     // Use TranslateService to retrieve the translated school name.
     const schoolTranslationKey = `FACULTIES.${name}`;
@@ -178,6 +183,13 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
         if (item.types.includes('višak')) {
           groupVisak.push(item.name);
         }
+      });
+    }
+
+    if (groupHitno.length) {
+      this.urgentList.push({ // <-- Add to urgent list
+        school: schoolNameTranslated,
+        items: groupHitno
       });
     }
 

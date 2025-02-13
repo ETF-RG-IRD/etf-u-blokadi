@@ -3,7 +3,7 @@
         class="screen-stable relative max-w-screen-xl flex flex-wrap text-white items-center justify-between mx-auto p-2">
         <!-- Left side: Navigation links -->
         <div class="hidden md:flex items-center justify between md:w-auto order-1">
-            <ul class="flex flex-col md:flex-row md:gap-8 gap-x-3 px-2 md:my-1 my-3 items-center flex-wrap">
+            <ul class="flex flex-col md:flex-row md:gap-8 gap-x-3 px-2 md:my-1 my-3 items-center flex-wrap user-select-none">
                 <li><a class="nav-link" routerLink="/" routerLinkActive="text-red-500"
                         [routerLinkActiveOptions]="{ exact: true }">{{
                         "ZAHTEVI"
@@ -86,7 +86,7 @@
 
         <!-- Right side: Language Dropdown -->
         <div 
-        class="relative flex items-center mx-2 md:order-2 gap-1 md:gap-0 rounded-lg border border-transparent hover:bg-gray-700 transition-colors duration-200">
+        class="relative flex items-center mx-2 md:order-2 gap-1 md:gap-0 rounded-lg border border-transparent hover:bg-gray-700 transition-colors duration-200 user-select-none">
             <button (click)="toggleLangDropdown()" type="button" data-dropdown-toggle="language-dropdown-menu" 
             class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-white rounded-lg cursor-pointer inset-shadow-sm transition-colors duration-200">
                 {{ siteLanguage }} ▼

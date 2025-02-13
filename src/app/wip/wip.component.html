@@ -1,12 +1,12 @@
 <div class=" flex items-center justify-center">
     <div class="text-center">
-        <h1 class="text-4xl font-bold mb-4 text-white">{{ "PROGRESS" | translate}}</h1>
+        <h1 class="text-4xl font-bold mb-4 text-white user-select-none">{{ "PROGRESS" | translate}}</h1>
 
         <!-- Progress Bar -->
         <div class="w-64 h-4 bg-gray-700 rounded-full overflow-hidden mx-auto">
             <div class="h-full bg-red-500 rounded-full" [ngStyle]="{'width': progress + '%'}"></div>
         </div>
 
-        <p class="mt-4 text-sm text-white">{{ progress }}% Complete</p>
+        <p class="mt-4 text-sm text-white user-select-none">{{ progress }}% Complete</p>
     </div>
 </div>

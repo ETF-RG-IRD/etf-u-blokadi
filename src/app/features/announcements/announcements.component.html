@@ -1,1 +1,28 @@
-<app-wip></app-wip>
+<div class="announcements-container">
+    <div *ngIf="isLoading" class="loading">
+      Loading announcements...
+    </div>
+  
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="!isLoading && announcements.length === 0" class="no-announcements">
+      <p>No announcements available.</p>
+    </div>
+  
+    <div *ngIf="!isLoading && announcements.length > 0">
+      <h2>Latest Announcements</h2>
+      <ul>
+        <li *ngFor="let announcement of announcements">
+          <div class="announcement">
+            <!-- Show text or caption from the announcement -->
+            <p class="content">
+              {{ announcement.text || announcement.caption }}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

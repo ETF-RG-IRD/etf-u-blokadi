@@ -187,7 +187,7 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
     }
 
     if (groupHitno.length) {
-      this.urgentList.push({ // <-- Add to urgent list
+      this.urgentList.push({
         school: schoolNameTranslated,
         items: groupHitno
       });

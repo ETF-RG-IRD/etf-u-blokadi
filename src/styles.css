@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
+
+@theme {  
+    --font-content: "Work Sans", "sans-serif";
+}
 
 .nav-underline .nav-link:hover {
     color: #FF0000;

@@ -15,14 +15,14 @@
         </div>
         <button *ngIf="showButton && showHero" (click)="scrollToSection()"
             [ngClass]="{'opacity-100': buttonVisible, 'opacity-0': !buttonVisible, 'transition-opacity': true, 'duration-500': true, 'ease-in-out': true}"
-            class="hero-button fixed left-1/2 transform -translate-x-1/2 bottom-10 md:left-40 flex p-0 items-center justify-center bg-red-600/90 text-black w-16 h-16 rounded-full border-1 border-red-400/30 hover:bg-red-700">
+            class="hero-button fixed left-1/2 transform -translate-x-1/2 bottom-15 md:left-1/16 flex p-0 items-center justify-center bg-radial-[at_75%_75%] to-red-900 from-red-700 text-neutral-900 w-16 h-16 rounded-full  hover:bg-red-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-8 h-8" style="margin-top: 3px;">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
             </svg>
         </button>
-        <div #contentSection class="container pb-20">
+        <div #contentSection class="container pb-20 md:pb-60">
             <!-- Wrap the router-outlet with a div that has the animation trigger -->
             <div [@routeAnimations]="prepareRoute(outlet)">
                 <router-outlet #outlet="outlet"></router-outlet>

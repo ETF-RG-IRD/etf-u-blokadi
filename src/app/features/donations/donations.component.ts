@@ -1,5 +1,5 @@
 // donations.component.ts
-import { Component, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, NgZone, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import * as L from 'leaflet';
 import { CommonModule } from '@angular/common';
 import { DonationDataService, DonationData } from './donations.service';
@@ -91,7 +91,8 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
   constructor(
     private ngZone: NgZone,
     private donationDataService: DonationDataService,
-    private translate: TranslateService  // <-- Inject TranslateService
+    private translate: TranslateService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngAfterViewInit(): void {
@@ -191,6 +192,7 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
         school: schoolNameTranslated,
         items: groupHitno
       });
+      this.cdr.detectChanges();
     }
 
     // Build the popup HTML content.

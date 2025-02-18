@@ -8,7 +8,8 @@ import {
   style,
   animate,
   query,
-  stagger
+  stagger,
+  group
 } from '@angular/animations';
 
 @Component({
@@ -25,17 +26,24 @@ import {
     // Apply cascade animation to the whole container
     trigger('listAnimation', [
       transition(':enter', [
-        query('*', [
-          // Start all child elements slightly above with zero opacity.
-          style({ opacity: 0, transform: 'translateY(-20px)' }),
-          // Each child starts its animation 100ms after the previous one.
-          stagger(40, [
-            animate(
-              '100ms ease-out',
-              style({ opacity: 1, transform: 'translateY(0)' })
-            )
-          ])
-        ], { optional: true })
+        style({ height: '0px', opacity: 0, overflow: 'hidden'}),
+        group([
+          animate(
+            '300ms ease-out',
+            style({ height: '*', opacity: 1 }) // Expand height and fade in
+          ),
+          query('*', [
+            // Start all child elements slightly above with zero opacity.
+            style({ opacity: 0, transform: 'translateY(-20px)' }),
+            // Each child starts its animation 100ms after the previous one.
+            stagger(40, [
+              animate(
+                '100ms ease-out',
+                style({ opacity: 1, transform: 'translateY(0)' })
+              )
+            ])
+          ], { optional: true })
+        ])
       ])
     ])
   ]

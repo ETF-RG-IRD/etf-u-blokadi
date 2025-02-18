@@ -1,3 +1,7 @@
+.accordion-header {
+    font-size: 1.05rem;
+}
+
 @keyframes pulse-fast {
 
     0%,

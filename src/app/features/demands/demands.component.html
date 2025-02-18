@@ -3,7 +3,7 @@
   <div *ngFor="let item of accordionItems; let i = index" class="mb-2 font-content">
     <!-- Accordion Header -->
     <button
-      class="text-left rounded accordion-header font-medium flex justify-between items-center w-full p-4 px-5 bg-gradient-to-bl from-red-950 to-red-800 hover:bg-red-700 text-white focus:outline-none shadow-md shadow-zinc-900"
+      class="text-left rounded accordion-header font-medium flex justify-between items-center w-full p-4 px-5 bg-gradient-to-r from-red-950 to-rose-950 hover:from-red-700 hover:to-red-700 text-white focus:outline-none shadow-md shadow-zinc-900"
       (click)="toggleItem(i)">
       <span>{{ item.title }}</span>
       <!-- Arrow Icon -->

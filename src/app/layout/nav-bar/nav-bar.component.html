@@ -1,8 +1,8 @@
-<nav
-  class="sticky top-0 z-1000 bg-zinc-900/20 backdrop-filter backdrop-blur-lg border-b border-zinc-700/10 shadow-md"
+<nav [ngClass]="{ 'border-b border-zinc-700/10  backdrop-blur-lg  shadow-md': !navDropdownOpen, 'backdrop-blur-2xl': navDropdownOpen }"
+  class="sticky top-0 z-1000 bg-zinc-900/20 backdrop-filter"
 >
   <div
-    class="screen-stable relative max-w-screen-xl flex flex-wrap text-white items-center justify-between mx-auto p-2"
+    class="screen-stable container relative max-w-screen-xl flex flex-wrap text-white items-center justify-between mx-auto p-2"
   >
     <!-- Left side: Navigation links -->
     <div class="hidden md:flex items-center justify between md:w-auto order-1">
@@ -97,7 +97,7 @@
     <div
       *ngIf="navDropdownOpen"
       @listAnimation
-      class="absolute text-lg font-medium top-full my-2 mx-10 right-0 left-0 bg-gradient-to-bl from-neutral-200/10 to-stone-950 backdrop-filter backdrop-blur-lg border-b rounded-lg border-zinc-700/10 shadow-md md:hidden"
+      class="absolute text-lg font-medium top-full right-0 left-0 bg-zinc-900/20 backdrop-filter backdrop-blur-2xl border-b border-zinc-800/50 shadow-md md:hidden"
     >
       <ul
         (click)="toggleNavDropdown()"

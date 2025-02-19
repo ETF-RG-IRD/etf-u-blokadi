@@ -1,5 +1,5 @@
 <div [ngClass]="{ 'pt-20': showHero, 'min-h-[140px] flex items-start justify-start pt-5 pb-15': !showHero }">
-    <div class="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:pt-3 lg:grid-cols-12">
+    <div class="grid max-w-screen-xl px-4 mx-auto lg:gap-0 lg:pt-3 lg:grid-cols-12">
         <h1 *ngIf="showHero"
             class="max-w-3xl mr-auto my-4 place-self-center lg:col-span-10 text-left text-red-500 font-bold ibm-plex-mono-bold text-5xl md:text-7xl lg:text-8xl tracking-wider">
             <span class="typewriter-text1 text-red-700 text-6xl md:text-8xl">{{ displayedText1 }}</span>

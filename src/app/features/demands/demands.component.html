@@ -1,40 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="space-mono-regular text-white p-4">
-        <!-- Loop through accordion items -->
-        <div *ngFor="let item of accordionItems; let i = index" class="mb-2">
-          <!-- Accordion Header -->
-          <button
-            class="text-left rounded accordion-header flex justify-between items-center w-full p-4 bg-red-950 hover:bg-red-700 text-white focus:outline-none"
-            (click)="toggleItem(i)">
-            <span>{{ item.title }}</span>
-            <!-- Arrow Icon -->
-            <svg class="w-5 h-5 flex-shrink-0 transform transition-transform" [ngClass]="{ 'rotate-180': item.isOpen }"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </button>
+<div class="text-white md:p-4 pt-0">
+  <!-- Loop through accordion items -->
+  <div *ngFor="let item of accordionItems; let i = index" class="mb-2 font-content rounded-none md:rounded-md">
+    <!-- Accordion Header -->
+    <button
+      class="text-left rounded accordion-header font-medium flex justify-between items-center w-full p-4 md:px-5 bg-gradient-to-r from-red-950 to-rose-950 hover:from-red-700 hover:to-red-700 text-white focus:outline-none shadow-md shadow-zinc-900"
+      (click)="toggleItem(i)">
+      <span>{{ item.title }}</span>
+      <!-- Arrow Icon -->
+      <svg class="w-5 h-5 z-5 flex-shrink-0 transform transition-transform" [ngClass]="{ 'rotate-180': item.isOpen }"
+        fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
 
-          <!-- Accordion Content -->
-          <div class="accordion-content overflow-hidden transparent-bg bg-gray-950 rounded-lg transition-all duration-200"
-            [ngStyle]="{ 'max-height': item.isOpen ? '5000px' : '0' }">
-            <div class="p-4" [innerHTML]="item.content">
-              <!-- pogledaj innerHtml u ovom div-u korisno za ubacivanje html tagova u json fajl, npr <br> -->
-            </div>
-            <div>
-              <h3 class="text-center !font-extrabold animate-pulse-fast 
+    <!-- Accordion Content -->
+    <div *ngIf="item.isOpen"
+      class="accordion-content font-content px-4 py-3 font-base overflow-hiddenbackdrop-filter backdrop-blur-lg bg-gradient-to-tl from-zinc-950/40 from-10% to-neutral-800/40 to-90%  transition-all duration-200 md:rounded shadow-xs shadow-zinc-950/50">
+      <div class="p-4" [innerHTML]="item.content">
+        <!-- pogledaj innerHtml u ovom div-u korisno za ubacivanje html tagova u json fajl, npr <br> -->
+      </div>
+      <div>
+        <h3 class="pb-2 pt-8 text-center ibm-plex-mono-medium !font-extrabold animate-pulse-fast 
                             drop-shadow-[0_0_8px_#ef4444]" [ngClass]="{
                             '!text-red-500 drop-shadow-red': !item.isFulfilled,
                             '!text-green-500 drop-shadow-green': item.isFulfilled
                           }">
-              {{ item.isFulfilled ? 'STATUS.FULFILLED' : 'STATUS.NOT_FULFILLED' | translate }}
-              </h3>
-            </div>
-          </div>
-        </div>
+          {{ item.isFulfilled ? 'STATUS.FULFILLED' : 'STATUS.NOT_FULFILLED' | translate }}
+        </h3>
       </div>
-
     </div>
   </div>
 </div>

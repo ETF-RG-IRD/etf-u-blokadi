@@ -1,5 +1,5 @@
 // donations.component.ts
-import { Component, AfterViewInit, NgZone, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, NgZone, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import * as L from 'leaflet';
 import { CommonModule } from '@angular/common';
 import { DonationDataService, DonationData } from './donations.service';
@@ -85,11 +85,14 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
     popupAnchor: [0, -32],
     className: 'marker-icon-transition'
   });
+
+  public urgentList: { school: string; items: string[] }[] = [];
   
   constructor(
     private ngZone: NgZone,
     private donationDataService: DonationDataService,
-    private translate: TranslateService  // <-- Inject TranslateService
+    private translate: TranslateService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngAfterViewInit(): void {
@@ -149,6 +152,9 @@ export class DonationsComponent implements AfterViewInit, OnDestroy {
   // Update addMarkers() to include donation info from the API and use translations.
  // donations.component.ts (only the addMarkers() method shown)
 private addMarkers(donations: { [school: string]: { name: string, types: string[] }[] } = {}): void {
+
+  this.urgentList = []; 
+
   Array.from(this.LOCATIONS.entries()).forEach(([name, coordinates]) => {
     // Use TranslateService to retrieve the translated school name.
     const schoolTranslationKey = `FACULTIES.${name}`;
@@ -179,6 +185,14 @@ private addMarkers(donations: { [school: string]: { name: string, types: string[
           groupVisak.push(item.name);
         }
       });
+    }
+
+    if (groupHitno.length) {
+      this.urgentList.push({
+        school: schoolNameTranslated,
+        items: groupHitno
+      });
+      this.cdr.detectChanges();
     }
 
     // Build the popup HTML content.

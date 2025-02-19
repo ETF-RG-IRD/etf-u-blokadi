@@ -18,12 +18,30 @@ export class AnnouncementsComponent implements OnInit, OnDestroy {
   constructor(private webSocketService: WebSocketService) { }
 
   ngOnInit(): void {
+    /**
+     * Messages are sent in this format
+     * {
+     *  type: <MESSAGE_TYPE>,
+     *  data: <MESSAGE_DATA>
+     * }
+     * For now there is a special message for the message history:
+     * {
+     *  type: 'history',
+     *  data: [
+     *    {
+     *      type: <MESSAGE_TYPE>
+     *      data: <MESSAGE_DATA>
+     *    },
+     *    ...
+     *  ]
+     * }
+     */
     this.messageSubscription = this.webSocketService.get_messages().subscribe({
       next: (message) => {
-        let data = JSON.parse(message).data
-        data = JSON.parse(data)
 
-
+        const data = JSON.parse(JSON.parse(message).data);
+        // console.log(data);
+        // console.log(JSON.parse(message))
         this.messages.push(data);
 
       },

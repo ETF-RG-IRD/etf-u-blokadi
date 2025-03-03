@@ -15,14 +15,25 @@ export interface DonationData {
 @Injectable({ providedIn: 'root' })
 export class DonationDataService {
   // Determine the API URL based on the hostname.
-  private apiUrl =
-    window.location.hostname === 'localhost'
-      ? 'http://localhost:3000/api/donations'
-      : window.location.hostname.includes('netlify.app')
-        ? '/.netlify/functions/donations'
-        : '/api/donations';
+  private apiUrl = this.getApiUrl();
 
   constructor(private http: HttpClient) {}
+
+  private getApiUrl(): string {
+    const hostname = window.location.hostname;
+    
+    if (hostname === 'localhost') {
+      return 'http://localhost:3000/api/donations';
+    } else if (hostname.includes('netlify.app')) {
+      return '/.netlify/functions/donations';
+    } else if (hostname === 'etfublokadi.rs' || hostname.includes('etfublokadi.rs')) {
+      // Production domain handling
+      return '/api/donations';
+    } else {
+      // Fallback for any other domains
+      return '/api/donations';
+    }
+  }
 
   getDonations(): Observable<DonationData> {
     return this.http.get<DonationData>(this.apiUrl);

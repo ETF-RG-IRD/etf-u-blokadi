@@ -1,7 +1,7 @@
 // donation-data.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, retry, throwError } from 'rxjs';
 
 export interface DonationItem {
   name: string;
@@ -17,7 +17,9 @@ export class DonationDataService {
   // Determine the API URL based on the hostname.
   private apiUrl = this.getApiUrl();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log('Using API URL:', this.apiUrl);
+  }
 
   private getApiUrl(): string {
     const hostname = window.location.hostname;
@@ -27,15 +29,26 @@ export class DonationDataService {
     } else if (hostname.includes('netlify.app')) {
       return '/.netlify/functions/donations';
     } else if (hostname === 'etfublokadi.rs' || hostname.includes('etfublokadi.rs')) {
-      // Production domain handling
-      return '/api/donations';
+      // For production domain, use Netlify functions as they are working
+      return '/.netlify/functions/donations';
     } else {
       // Fallback for any other domains
-      return '/api/donations';
+      return '/.netlify/functions/donations';
     }
   }
 
   getDonations(): Observable<DonationData> {
-    return this.http.get<DonationData>(this.apiUrl);
+    return this.http.get<DonationData>(this.apiUrl).pipe(
+      retry(1),
+      catchError(error => {
+        console.error('Error fetching donations:', error);
+        // If there's an error with the selected API URL, try the Netlify function as a fallback
+        if (this.apiUrl !== '/.netlify/functions/donations') {
+          console.log('Falling back to Netlify function endpoint');
+          return this.http.get<DonationData>('/.netlify/functions/donations');
+        }
+        return throwError(() => error);
+      })
+    );
   }
 }

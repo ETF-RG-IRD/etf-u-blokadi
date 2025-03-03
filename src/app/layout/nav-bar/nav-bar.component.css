@@ -1,0 +1,13 @@
+nav {
+  z-index: 9999;
+}
+
+/* Ensure the mobile dropdown is also on top */
+.absolute.text-lg.font-medium.top-full {
+  z-index: 9998;
+}
+
+/* Language dropdown should also be on top */
+#language-dropdown-menu {
+  z-index: 9997;
+}

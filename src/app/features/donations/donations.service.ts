@@ -29,11 +29,11 @@ export class DonationDataService {
     } else if (hostname.includes('netlify.app')) {
       return '/.netlify/functions/donations';
     } else if (hostname === 'etfublokadi.rs' || hostname.includes('etfublokadi.rs')) {
-      // For production domain, use Netlify functions as they are working
-      return '/.netlify/functions/donations';
+      // For production domain, use your API endpoint
+      return '/api/donations';  // Changed from Netlify functions to your API endpoint
     } else {
       // Fallback for any other domains
-      return '/.netlify/functions/donations';
+      return '/api/donations';  // Also update this fallback
     }
   }
 

@@ -1,9 +1,11 @@
 <div>
-    <h2 class="text-center">Announcements</h2>
     <div class="flex min-h-screen min-w-full">
         <div class="w-full p-4 rounded-xl">
             <div *ngFor="let message of messages; let i = index" class="mb-2">
-                <p> Najava {{i}}: {{ message.data }}</p>
+                <div>
+                    <h4>{{ message.date }}</h4>
+                    <p>{{ message.text }}</p>
+                </div>
             </div>
         </div>
     </div>

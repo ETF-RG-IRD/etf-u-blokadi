@@ -11,7 +11,7 @@ export class WebSocketService {
   private messageSubject: Subject<string> = new Subject<string>();
 
   constructor() {
-    this.socket = new WebSocket(`ws://${environment.web_socket_URI}`);
+    this.socket = new WebSocket(`ws://localhost:8080`);
 
 
     this.socket.onopen = (event) => {

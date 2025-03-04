@@ -1,1 +1,12 @@
-<app-wip></app-wip>
+<div>
+    <div class="flex min-h-screen min-w-full">
+        <div class="w-full p-4 rounded-xl">
+            <div *ngFor="let message of messages; let i = index" class="mb-2">
+                <div>
+                    <h4>{{ message.date }}</h4>
+                    <p>{{ message.text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

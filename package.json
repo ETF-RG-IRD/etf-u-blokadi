@@ -27,6 +27,9 @@
     "bootstrap": "^5.3.3",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "fastify": "^5.2.1",
     "fastify-cors": "^6.0.3",
@@ -34,6 +37,7 @@
     "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "ws": "^8.18.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {

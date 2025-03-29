@@ -3,8 +3,8 @@
         <div class="w-full p-4 rounded-xl">
             <div *ngFor="let message of messages; let i = index" class="mb-2">
                 <div>
-                    <h4>{{ message.date }}</h4>
-                    <p>{{ message.text }}</p>
+                    <!--<h4>{{ message.date }}</h4>-->
+                    <p class="text-white bg-red-700 border border-red-900 p-4 rounded-lg">{{ message.text }}</p>
                 </div>
             </div>
         </div>

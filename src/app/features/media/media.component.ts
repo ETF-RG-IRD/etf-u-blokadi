@@ -1,11 +1,12 @@
 import { Component, AfterViewInit, ElementRef, Renderer2, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../../layout/loader/loader.component';
+import { SafePipe } from '../../pipes/safe.pipe';
 
 @Component({
   selector: 'app-media',
   standalone: true,
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule, LoaderComponent, SafePipe],
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.css']
 })
@@ -19,6 +20,21 @@ export class MediaComponent implements OnInit, AfterViewInit, OnDestroy {
     { username: 'tmf.blokada' }
   ];
 
+  // YouTube profiles for embed
+  youtubeChannels = [
+    { 
+      //channelId: 'UCiAdJ_4BghgjNHWs-bPZJbQ',
+      embedUrl: 'https://www.youtube.com/embed/videoseries?list=UUiAdJ_4BghgjNHWs-bPZJbQ' // UC -> UU prefix za uploads playlistu
+    }
+  ];
+
+  // Twitter profiles for embed
+  twitterProfiles = [
+    { 
+      username: 'etfblokada' 
+    }
+  ];
+  
   // Array of image file names (assumed to be in your assets folder or served appropriately)
   images = Array.from({ length: 10 }, (_, i) => `${i + 1}.jpg`);
   currentImageIndex = 0;
@@ -31,12 +47,12 @@ export class MediaComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.loadInstagramEmbed();
+    this.loadSocialMediaScripts();
     this.shuffleInstagramProfiles();
   }
 
   ngAfterViewInit() {
-    this.processInstagramEmbeds();
+    this.processSocialMediaEmbeds();
     // Start auto slide every 3 seconds
     this.autoSlideInterval = setInterval(() => {
       this.nextImage();
@@ -49,31 +65,40 @@ export class MediaComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  // Load the Instagram embed script if not already loaded
-  loadInstagramEmbed() {
-    if ((window as any).instgrm) {
-      this.ngOnLoad();
-    } else {
-      const script = this.renderer.createElement('script');
-      script.src = 'https://www.instagram.com/embed.js';
-      script.async = true;
-      script.defer = true;
-      let scriptLoaded = false;
-      script.onload = () => {
-        if (!scriptLoaded) {
-          scriptLoaded = true;
-          this.processInstagramEmbeds();
-          this.ngOnLoad();
-        }
-      };
-      this.renderer.appendChild(document.body, script);
+  // Load the necessary social media scripts
+  loadSocialMediaScripts() {
+    // Instagram embed script
+    if (!(window as any).instgrm) {
+      const instaScript = this.renderer.createElement('script');
+      instaScript.src = 'https://www.instagram.com/embed.js';
+      instaScript.async = true;
+      instaScript.defer = true;
+      this.renderer.appendChild(document.body, instaScript);
     }
+    
+    // Twitter embed script
+    if (!(window as any).twttr) {
+      const twitterScript = this.renderer.createElement('script');
+      twitterScript.src = 'https://platform.twitter.com/widgets.js';
+      twitterScript.async = true;
+      twitterScript.charset = 'utf-8';
+      this.renderer.appendChild(document.body, twitterScript);
+    }
+    
+    // Mark all scripts loaded
+    this.ngOnLoad();
   }
 
-  // Process any Instagram embeds if available
-  processInstagramEmbeds() {
+  // Processing embed elements
+  processSocialMediaEmbeds() {
+    // Instagram
     if ((window as any).instgrm && (window as any).instgrm.Embeds) {
       (window as any).instgrm.Embeds.process();
+    }
+    
+    // Twitter
+    if ((window as any).twttr && (window as any).twttr.widgets) {
+      (window as any).twttr.widgets.load();
     }
   }
 

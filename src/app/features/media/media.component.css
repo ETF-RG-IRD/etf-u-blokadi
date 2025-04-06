@@ -35,3 +35,51 @@
 .slide-in-left {
   animation: slideInLeft 1s ease-in-out forwards;
 }
+
+
+/* ------------------ Social Media Customization ------------------ */
+.embed-container {
+  width: 100%;
+  max-width: 325px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Instagram styling */
+.instagram-embed {
+  background-color: rgba(193, 53, 132, 0.1);
+  border: 2px solid rgba(193, 53, 132, 0.5);
+}
+
+.instagram-embed:hover {
+  border-color: rgb(193, 53, 132);
+  box-shadow: 0 4px 20px rgba(193, 53, 132, 0.3);
+}
+
+/* YouTube styling */
+.youtube-embed {
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 2px solid rgba(255, 0, 0, 0.5);
+}
+
+.youtube-embed:hover {
+  border-color: rgb(255, 0, 0);
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+}
+
+/* Twitter styling */
+.twitter-embed {
+  background-color: rgba(29, 161, 242, 0.1);
+  border: 2px solid rgba(29, 161, 242, 0.5);
+}
+
+.twitter-embed:hover {
+  border-color: rgb(29, 161, 242);
+  box-shadow: 0 4px 20px rgba(29, 161, 242, 0.3);
+}
+
+/* Responsive styling */
+@media (max-width: 640px) {
+  .embed-container {
+    max-width: 100%;
+  }
+}
